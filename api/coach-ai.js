@@ -1,4 +1,4 @@
-// File: /api/coach-ai.js
+// File: /api/coach-ai.js (per Vercel)
 
 export default async function handler(req, res) {
   const apiKey = process.env.OPENAI_API_KEY;
