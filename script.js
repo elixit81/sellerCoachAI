@@ -1,21 +1,27 @@
 // script.js
 
 // Funzione: Consiglio del Giorno
-async function caricaConsiglio() {
+async function generaConsiglio() {
   const output = document.getElementById("consiglio-testo");
   output.innerText = "Generazione in corso...";
 
-  const res = await fetch("/api/coach-ai", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      type: "consiglio",
-      prompt: "Genera un consiglio pratico e motivante per un venditore porta a porta di surgelati."
-    })
-  });
+  try {
+    const res = await fetch("/api/coach-ai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: "consiglio",
+        prompt: "Genera un consiglio pratico e motivante per un venditore porta a porta di surgelati."
+      })
+    });
 
-  const data = await res.json();
-  output.innerText = data.result || "Errore generazione consiglio.";
+    if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
+
+    const data = await res.json();
+    output.innerText = data.result || "Errore generazione consiglio.";
+  } catch (error) {
+    output.innerText = `Errore: ${error.message}`;
+  }
 }
 
 // Diario di Bordo & Coach AI
@@ -36,26 +42,26 @@ form?.addEventListener("submit", async (e) => {
   const output = document.getElementById("analisi-output");
   output.innerText = "Analisi in corso...";
 
-  const res = await fetch("/api/coach-ai", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      type: "analisi",
-      prompt: messaggio
-    })
-  });
+  try {
+    const res = await fetch("/api/coach-ai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: "analisi",
+        prompt: messaggio
+      })
+    });
 
-  const data = await res.json();
-  output.innerText = data.result || "Errore durante l'analisi.";
+    if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
+
+    const data = await res.json();
+    output.innerText = data.result || "Errore durante l'analisi.";
+  } catch (error) {
+    output.innerText = `Errore: ${error.message}`;
+  }
 });
 
 // Avvia caricamento consiglio al caricamento pagina
 document.addEventListener("DOMContentLoaded", () => {
-  caricaConsiglio();
-});
-
-
-  const data = await response.json();
-  const output = data.result || "Errore nell'analisi del Coach AI.";
-  document.getElementById("analisi-output").innerText = output;
+  generaConsiglio();
 });
