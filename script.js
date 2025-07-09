@@ -11,7 +11,7 @@ async function generaConsiglio() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         type: "consiglio",
-        prompt: "Genera un consiglio pratico e motivante per un venditore porta a porta di surgelati."
+        prompt: "Genera una breve frase motivante per un venditore bofrost. Dammi una pillola giornaliera che possa attuare oggi stesso in vendita."
       })
     });
 
