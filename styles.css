@@ -1,51 +1,90 @@
+/* STYLES.CSS - Seller Coach AI */
+
 body {
-  font-family: sans-serif;
-  background: #f0f0f0;
-  color: #333;
+  font-family: Arial, sans-serif;
+  background: #f0f4f8;
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
 header {
-  background-color: #0077cc;
-  color: white;
-  padding: 1rem;
+  background-color: #1e3a8a;
+  color: #fff;
+  padding: 20px;
   text-align: center;
 }
 
-main {
-  padding: 1rem;
+h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 section {
-  background: white;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+h2 {
+  color: #1e3a8a;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
-  margin: 0.5rem 0;
+  margin: 12px 0 4px;
+  font-weight: bold;
 }
 
-input, select, textarea, button {
+input, select, textarea {
   width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.25rem;
+  padding: 10px;
+  margin-bottom: 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
 }
 
 button {
-  background-color: #0077cc;
-  color: white;
+  background-color: #2563eb;
+  color: #fff;
   border: none;
-  margin-top: 1rem;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
 }
 
 button:hover {
-  background-color: #005fa3;
+  background-color: #1d4ed8;
+}
+
+.output-box {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-style: italic;
+}
+
+footer {
+  background: #1e3a8a;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  margin-top: 40px;
 }
