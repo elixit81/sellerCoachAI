@@ -1,7 +1,1 @@
-{
-  "functions": {
-    "api/coach-ai.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
-}
+
