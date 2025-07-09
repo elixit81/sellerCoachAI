@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SellerCoachAI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>SellerCoachAI</h1>
+  </header>
+
+  <main>
+    <!-- Consiglio del Giorno -->
+    <section id="consiglio">
+      <h2>Consiglio del Giorno</h2>
+      <p id="consiglio-testo">Caricamento consiglio...</p>
+      <button id="genera-consiglio">Genera Consiglio</button>
+    </section>
+
+    <!-- Diario di Bordo & Coach AI -->
+    <section id="diario">
+      <h2>Analizza e Migliora</h2>
+      <form id="feedback-form">
+        <label>Cliente:<input type="text" id="cliente" required /></label>
+        <label>Clima:
+          <select id="clima">
+            <option value="aperto">Aperto</option>
+            <option value="di fretta">Di fretta</option>
+            <option value="scettico">Scettico</option>
+            <option value="amichevole">Amichevole</option>
+          </select>
+        </label>
+        <label>Obiettivo:<input type="text" id="obiettivo" required /></label>
+        <label>Prodotti:<input type="text" id="prodotti" required /></label>
+        <label>Obiezione:
+          <select id="obiezione">
+            <option value="troppo caro">Troppo caro</option>
+            <option value="spazio freezer">Spazio freezer</option>
+            <option value="ci devo pensare">Ci devo pensare</option>
+            <option value="compro altro">Compro già altro</option>
+            <option value="non mi interessa">Non mi interessa</option>
+          </select>
+        </label>
+        <label>Risposta:<textarea id="mia-risposta" required></textarea></label>
+        <label>Esito:
+          <select id="esito">
+            <option value="vendita conclusa">Vendita Conclusa</option>
+            <option value="vendita parziale">Vendita Parziale</option>
+            <option value="nessuna vendita">Nessuna Vendita</option>
+            <option value="cliente incuriosito">Cliente Incuriosito</option>
+          </select>
+        </label>
+        <button type="submit">Analizza</button>
+      </form>
+      <div id="analisi-output"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
