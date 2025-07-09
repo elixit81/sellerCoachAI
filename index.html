@@ -3,60 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SellerCoachAI</title>
+  <title>Seller Coach AI</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>SellerCoachAI</h1>
+    <h1>Seller Coach AI</h1>
   </header>
 
-  <main>
-    <!-- Consiglio del Giorno -->
-    <section id="consiglio">
+  <main class="container">
+    <!-- Modulo 1: Consiglio del Giorno -->
+    <section id="consiglio-giorno">
       <h2>Consiglio del Giorno</h2>
-      <p id="consiglio-testo">Caricamento consiglio...</p>
-      <button id="genera-consiglio">Genera Consiglio</button>
+      <button onclick="generaConsiglio()">Genera Consiglio</button>
+      <p id="consiglio-testo">Premi il pulsante per ricevere un consiglio AI!</p>
     </section>
 
-    <!-- Diario di Bordo & Coach AI -->
+    <!-- Modulo 2: Diario di Bordo -->
     <section id="diario">
-      <h2>Analizza e Migliora</h2>
+      <h2>Diario di Bordo & Coach AI</h2>
       <form id="feedback-form">
-        <label>Cliente:<input type="text" id="cliente" required /></label>
-        <label>Clima:
-          <select id="clima">
-            <option value="aperto">Aperto</option>
-            <option value="di fretta">Di fretta</option>
-            <option value="scettico">Scettico</option>
-            <option value="amichevole">Amichevole</option>
-          </select>
-        </label>
-        <label>Obiettivo:<input type="text" id="obiettivo" required /></label>
-        <label>Prodotti:<input type="text" id="prodotti" required /></label>
-        <label>Obiezione:
-          <select id="obiezione">
-            <option value="troppo caro">Troppo caro</option>
-            <option value="spazio freezer">Spazio freezer</option>
-            <option value="ci devo pensare">Ci devo pensare</option>
-            <option value="compro altro">Compro già altro</option>
-            <option value="non mi interessa">Non mi interessa</option>
-          </select>
-        </label>
-        <label>Risposta:<textarea id="mia-risposta" required></textarea></label>
-        <label>Esito:
-          <select id="esito">
-            <option value="vendita conclusa">Vendita Conclusa</option>
-            <option value="vendita parziale">Vendita Parziale</option>
-            <option value="nessuna vendita">Nessuna Vendita</option>
-            <option value="cliente incuriosito">Cliente Incuriosito</option>
-          </select>
-        </label>
-        <button type="submit">Analizza</button>
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" required />
+
+        <label for="clima">Clima Iniziale:</label>
+        <select id="clima" required>
+          <option value="aperto">Aperto</option>
+          <option value="di fretta">Di fretta</option>
+          <option value="scettico">Scettico</option>
+          <option value="amichevole">Amichevole</option>
+        </select>
+
+        <label for="obiettivo">Obiettivo della visita:</label>
+        <input type="text" id="obiettivo" required />
+
+        <label for="prodotti">Prodotti/Offerte proposte:</label>
+        <input type="text" id="prodotti" required />
+
+        <label for="obiezione">Obiezione Chiave:</label>
+        <select id="obiezione">
+          <option value="">-- Nessuna --</option>
+          <option value="È troppo caro">È troppo caro</option>
+          <option value="Non ho spazio nel freezer">Non ho spazio nel freezer</option>
+          <option value="Ci devo pensare">Ci devo pensare</option>
+          <option value="Compro già altro">Compro già altro</option>
+          <option value="Non mi interessa">Non mi interessa</option>
+        </select>
+
+        <label for="mia-risposta">La Mia Risposta:</label>
+        <textarea id="mia-risposta" required></textarea>
+
+        <label for="esito">Esito Finale:</label>
+        <select id="esito" required>
+          <option value="vendita conclusa">Vendita Conclusa</option>
+          <option value="vendita parziale">Vendita Parziale</option>
+          <option value="nessuna vendita">Nessuna Vendita</option>
+          <option value="cliente incuriosito">Cliente incuriosito</option>
+        </select>
+
+        <button type="submit">Analizza con Coach AI</button>
       </form>
-      <div id="analisi-output"></div>
+
+      <div id="analisi-output" class="output-box"></div>
     </section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Seller Coach AI</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
