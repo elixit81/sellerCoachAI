@@ -1,3 +1,5 @@
+// api/coach-ai.js
+
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -11,17 +13,17 @@ export default async function handler(req, res) {
 
   const { type, prompt } = req.body;
 
+  let systemPrompt = "";
+
+  if (type === "consiglio") {
+    systemPrompt = "Sei un coach di vendita esperto per venditori porta a porta di surgelati.";
+  } else if (type === "analisi") {
+    systemPrompt = "Sei un coach esperto che analizza il comportamento di vendita e fornisce feedback costruttivo.";
+  } else {
+    return res.status(400).json({ error: "Tipo non valido" });
+  }
+
   try {
-    let systemPrompt = "";
-
-    if (type === "consiglio") {
-      systemPrompt = "Sei un coach di vendita esperto per venditori porta a porta di surgelati.";
-    } else if (type === "analisi") {
-      systemPrompt = "Sei un coach esperto che analizza il comportamento di vendita e fornisce feedback costruttivo.";
-    } else {
-      return res.status(400).json({ error: "Tipo non valido" });
-    }
-
     const chat = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
