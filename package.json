@@ -1,8 +1,13 @@
 {
-  "name": "sellerCoachAI",
+  "name": "seller-coach-ai",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build",
+    "start": "vercel start"
+  },
   "dependencies": {
-    "openai": "^4.8.0"
+    "openai": "^4.0.0"
   }
 }
