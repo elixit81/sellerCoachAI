@@ -59,19 +59,16 @@ form?.addEventListener("submit", async (e) => {
   } catch (error) {
     output.innerText = `Errore: ${error.message}`;
   }
-});
+}
 
-// Avvia caricamento consiglio al caricamento pagina
-document.addEventListener("DOMContentLoaded", () => {
-  generaConsiglio();
-});
-
-// Lista cose da fare
+// To do Time: Lista cose da fare
 const todoForm = document.getElementById("todo-form");
 const todoList = document.getElementById("todo-list");
 
-// Carica la lista salvata all'avvio
 document.addEventListener("DOMContentLoaded", () => {
+  generaConsiglio();
+
+  // Carica la lista salvata all'avvio
   const salvati = JSON.parse(localStorage.getItem("todoList")) || [];
   salvati.forEach(dato => {
     aggiungiItem(dato.nome, dato.orario, dato.prodotti, dato.completato);
@@ -79,19 +76,21 @@ document.addEventListener("DOMContentLoaded", () => {
   ordinaLista();
 });
 
-todoForm.addEventListener("submit", function (e) {
-  e.preventDefault();
+if (todoForm) {
+  todoForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  const nome = document.getElementById("todo-nome").value.trim();
-  const orario = document.getElementById("todo-orario").value;
-  const prodotti = document.getElementById("todo-prodotti").value.trim();
-  if (!nome || !orario) return;
+    const nome = document.getElementById("todo-nome").value.trim();
+    const orario = document.getElementById("todo-orario").value;
+    const prodotti = document.getElementById("todo-prodotti").value.trim();
+    if (!nome || !orario) return;
 
-  aggiungiItem(nome, orario, prodotti, false);
-  salvaLista();
-  e.target.reset();
-  ordinaLista();
-});
+    aggiungiItem(nome, orario, prodotti, false);
+    salvaLista();
+    todoForm.reset();
+    ordinaLista();
+  });
+}
 
 function aggiungiItem(nome, orario, prodotti, completato) {
   const li = document.createElement("li");
