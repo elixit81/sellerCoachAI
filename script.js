@@ -87,5 +87,19 @@ document.getElementById("todo-form").addEventListener("submit", function (e) {
 
   document.getElementById("todo-list").appendChild(li);
   e.target.reset();
+  // Ordina la lista per orario
+const list = document.getElementById("todo-list");
+const items = Array.from(list.children);
+
+items.sort((a, b) => {
+  const timeA = a.querySelector("strong").innerText;
+  const timeB = b.querySelector("strong").innerText;
+  return timeA.localeCompare(timeB);
+});
+
+// Rimuove e riaggiunge in ordine
+list.innerHTML = "";
+items.forEach(item => list.appendChild(item));
+
 });
 
