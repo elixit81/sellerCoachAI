@@ -67,7 +67,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Lista cose da fare
-document.getElementById("todo-form").addEventListener("submit", function (e) {
+const todoForm = document.getElementById("todo-form");
+const todoList = document.getElementById("todo-list");
+
+// Carica la lista salvata
+window.addEventListener("DOMContentLoaded", () => {
+  const salvati = JSON.parse(localStorage.getItem("todoList")) || [];
+  salvati.forEach(dato => {
+    aggiungiItem(dato.nome, dato.orario, dato.prodotti, dato.completato);
+  });
+  ordinaLista();
+});
+
+todoForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const nome = document.getElementById("todo-nome").value.trim();
@@ -75,31 +87,53 @@ document.getElementById("todo-form").addEventListener("submit", function (e) {
   const prodotti = document.getElementById("todo-prodotti").value.trim();
   if (!nome || !orario) return;
 
+  aggiungiItem(nome, orario, prodotti, false);
+  salvaLista();
+  e.target.reset();
+  ordinaLista();
+});
+
+function aggiungiItem(nome, orario, prodotti, completato) {
   const li = document.createElement("li");
   li.innerHTML = `
     <span><strong>${orario}</strong> – ${nome}${prodotti ? ` (prodotti: ${prodotti})` : ""}</span>
-    <input type="checkbox" />
+    <input type="checkbox" ${completato ? "checked" : ""} />
   `;
 
-  li.querySelector("input").addEventListener("change", function () {
-    li.classList.toggle("completed", this.checked);
+  const checkbox = li.querySelector("input");
+  checkbox.addEventListener("change", () => {
+    li.classList.toggle("completed", checkbox.checked);
+    salvaLista();
   });
 
-  document.getElementById("todo-list").appendChild(li);
-  e.target.reset();
-  // Ordina la lista per orario
-const list = document.getElementById("todo-list");
-const items = Array.from(list.children);
+  if (completato) li.classList.add("completed");
 
-items.sort((a, b) => {
-  const timeA = a.querySelector("strong").innerText;
-  const timeB = b.querySelector("strong").innerText;
-  return timeA.localeCompare(timeB);
-});
+  todoList.appendChild(li);
+}
 
-// Rimuove e riaggiunge in ordine
-list.innerHTML = "";
-items.forEach(item => list.appendChild(item));
+function ordinaLista() {
+  const items = Array.from(todoList.children);
+  items.sort((a, b) => {
+    const timeA = a.querySelector("strong").innerText;
+    const timeB = b.querySelector("strong").innerText;
+    return timeA.localeCompare(timeB);
+  });
+  todoList.innerHTML = "";
+  items.forEach(item => todoList.appendChild(item));
+}
 
+function salvaLista() {
+  const dati = Array.from(todoList.children).map(li => {
+    const testo = li.querySelector("span").innerText;
+    const match = testo.match(/^(\d{2}:\d{2})\s–\s(.+?)(?:\s\(prodotti:\s(.+)\))?$/);
+    return {
+      orario: match[1],
+      nome: match[2],
+      prodotti: match[3] || "",
+      completato: li.querySelector("input").checked
+    };
+  });
+  localStorage.setItem("todoList", JSON.stringify(dati));
+}
 });
 
