@@ -135,5 +135,5 @@ function salvaLista() {
   });
   localStorage.setItem("todoList", JSON.stringify(dati));
 }
-});
+
 
