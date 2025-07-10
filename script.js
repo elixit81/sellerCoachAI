@@ -65,3 +65,27 @@ form?.addEventListener("submit", async (e) => {
 document.addEventListener("DOMContentLoaded", () => {
   generaConsiglio();
 });
+
+// Lista cose da fare
+document.getElementById("todo-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const nome = document.getElementById("todo-nome").value.trim();
+  const orario = document.getElementById("todo-orario").value;
+  const prodotti = document.getElementById("todo-prodotti").value.trim();
+  if (!nome || !orario) return;
+
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <span><strong>${orario}</strong> – ${nome}${prodotti ? ` (prodotti: ${prodotti})` : ""}</span>
+    <input type="checkbox" />
+  `;
+
+  li.querySelector("input").addEventListener("change", function () {
+    li.classList.toggle("completed", this.checked);
+  });
+
+  document.getElementById("todo-list").appendChild(li);
+  e.target.reset();
+});
+
