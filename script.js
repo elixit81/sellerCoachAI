@@ -67,16 +67,71 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Lista cose da fare
-// Ordina la lista per orario
-const list = document.getElementById("todo-list");
-const items = Array.from(list.children);
+const todoForm = document.getElementById("todo-form");
+const todoList = document.getElementById("todo-list");
 
-items.sort((a, b) => {
-  const timeA = a.querySelector("strong").innerText;
-  const timeB = b.querySelector("strong").innerText;
-  return timeA.localeCompare(timeB);
+// Carica la lista salvata all'avvio
+document.addEventListener("DOMContentLoaded", () => {
+  const salvati = JSON.parse(localStorage.getItem("todoList")) || [];
+  salvati.forEach(dato => {
+    aggiungiItem(dato.nome, dato.orario, dato.prodotti, dato.completato);
+  });
+  ordinaLista();
 });
 
-// Rimuove e riaggiunge in ordine
-list.innerHTML = "";
-items.forEach(item => list.appendChild(item));
+todoForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const nome = document.getElementById("todo-nome").value.trim();
+  const orario = document.getElementById("todo-orario").value;
+  const prodotti = document.getElementById("todo-prodotti").value.trim();
+  if (!nome || !orario) return;
+
+  aggiungiItem(nome, orario, prodotti, false);
+  salvaLista();
+  e.target.reset();
+  ordinaLista();
+});
+
+function aggiungiItem(nome, orario, prodotti, completato) {
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <span><strong>${orario}</strong> – ${nome}${prodotti ? ` (prodotti: ${prodotti})` : ""}</span>
+    <input type="checkbox" ${completato ? "checked" : ""} />
+  `;
+
+  const checkbox = li.querySelector("input");
+  checkbox.addEventListener("change", () => {
+    li.classList.toggle("completed", checkbox.checked);
+    salvaLista();
+  });
+
+  if (completato) li.classList.add("completed");
+
+  todoList.appendChild(li);
+}
+
+function ordinaLista() {
+  const items = Array.from(todoList.children);
+  items.sort((a, b) => {
+    const timeA = a.querySelector("strong").innerText;
+    const timeB = b.querySelector("strong").innerText;
+    return timeA.localeCompare(timeB);
+  });
+  todoList.innerHTML = "";
+  items.forEach(item => todoList.appendChild(item));
+}
+
+function salvaLista() {
+  const dati = Array.from(todoList.children).map(li => {
+    const testo = li.querySelector("span").innerText;
+    const match = testo.match(/^(\d{2}:\d{2})\s–\s(.+?)(?:\s\\(prodotti:\s(.+)\\))?$/);
+    return {
+      orario: match[1],
+      nome: match[2],
+      prodotti: match[3] || "",
+      completato: li.querySelector("input").checked
+    };
+  });
+  localStorage.setItem("todoList", JSON.stringify(dati));
+}
