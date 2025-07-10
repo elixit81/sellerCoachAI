@@ -59,22 +59,23 @@ form?.addEventListener("submit", async (e) => {
   } catch (error) {
     output.innerText = `Errore: ${error.message}`;
   }
-}
+});
 
-// To do Time: Lista cose da fare
-const todoForm = document.getElementById("todo-form");
-const todoList = document.getElementById("todo-list");
-
+// Avvia caricamento consiglio al caricamento pagina
 document.addEventListener("DOMContentLoaded", () => {
   generaConsiglio();
 
-  // Carica la lista salvata all'avvio
+  // Carica la lista To do Time dal localStorage
   const salvati = JSON.parse(localStorage.getItem("todoList")) || [];
   salvati.forEach(dato => {
     aggiungiItem(dato.nome, dato.orario, dato.prodotti, dato.completato);
   });
   ordinaLista();
 });
+
+// ——— SEZIONE TO DO TIME ———
+const todoForm = document.getElementById("todo-form");
+const todoList = document.getElementById("todo-list");
 
 if (todoForm) {
   todoForm.addEventListener("submit", function (e) {
@@ -83,6 +84,7 @@ if (todoForm) {
     const nome = document.getElementById("todo-nome").value.trim();
     const orario = document.getElementById("todo-orario").value;
     const prodotti = document.getElementById("todo-prodotti").value.trim();
+
     if (!nome || !orario) return;
 
     aggiungiItem(nome, orario, prodotti, false);
@@ -124,11 +126,13 @@ function ordinaLista() {
 function salvaLista() {
   const dati = Array.from(todoList.children).map(li => {
     const testo = li.querySelector("span").innerText;
-    const match = testo.match(/^(\d{2}:\d{2})\s–\s(.+?)(?:\s\\(prodotti:\s(.+)\\))?$/);
+    // Estraggo orario, nome e prodotti con regexp, gestendo il fatto che prodotti è opzionale
+    const match = testo.match(/^(\d{2}:\d{2})\s–\s(.+?)(?:\s\\(prodotti: (.+)\\))?$/) || 
+                  testo.match(/^(\d{2}:\d{2})\s–\s(.+)$/);
     return {
-      orario: match[1],
-      nome: match[2],
-      prodotti: match[3] || "",
+      orario: match ? match[1] : "",
+      nome: match ? match[2] : testo,
+      prodotti: match && match[3] ? match[3] : "",
       completato: li.querySelector("input").checked
     };
   });
