@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seller Coach AI</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Puoi anche spostarlo nel tuo styles.css */
+    #todo-list li.completed span {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -66,25 +73,25 @@
 
       <div id="analisi-output" class="output-box"></div>
     </section>
+
     <!-- Sezione To do Time -->
-<section id="todo-time">
-  <h2>To do Time</h2>
-  <form id="todo-form">
-    <label for="todo-nome">Nome Attività:</label>
-    <input type="text" id="todo-nome" required />
+    <section id="todo-time">
+      <h2>To do Time</h2>
+      <form id="todo-form">
+        <label for="todo-nome">Nome Attività:</label>
+        <input type="text" id="todo-nome" required />
 
-    <label for="todo-orario">Orario (24h):</label>
-    <input type="time" id="todo-orario" required />
+        <label for="todo-orario">Orario (24h):</label>
+        <input type="time" id="todo-orario" required />
 
-    <label for="todo-prodotti">Prodotti richiesti (opzionale):</label>
-    <input type="text" id="todo-prodotti" />
+        <label for="todo-prodotti">Prodotti richiesti (opzionale):</label>
+        <input type="text" id="todo-prodotti" />
 
-    <button type="submit">Aggiungi</button>
-  </form>
-  <ul id="todo-list"></ul>
-</section>
-
-
+        <button type="submit">Aggiungi</button>
+        <button type="button" id="reset-todo">Reset</button>
+      </form>
+      <ul id="todo-list"></ul>
+    </section>
   </main>
 
   <footer>
