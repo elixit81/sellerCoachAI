@@ -1,5 +1,3 @@
-// script.js
-
 // Funzione: Consiglio del Giorno
 async function generaConsiglio() {
   const output = document.getElementById("consiglio-testo");
@@ -61,11 +59,10 @@ form?.addEventListener("submit", async (e) => {
   }
 });
 
-// Avvia caricamento consiglio al caricamento pagina
+// Avvia caricamento consiglio e carica lista To do Time al caricamento pagina
 document.addEventListener("DOMContentLoaded", () => {
   generaConsiglio();
 
-  // Carica la lista To do Time dal localStorage
   const salvati = JSON.parse(localStorage.getItem("todoList")) || [];
   salvati.forEach(dato => {
     aggiungiItem(dato.nome, dato.orario, dato.prodotti, dato.completato);
@@ -73,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ordinaLista();
 });
 
-// ——— SEZIONE TO DO TIME ———
+// Sezione TO DO TIME
 const todoForm = document.getElementById("todo-form");
 const todoList = document.getElementById("todo-list");
 
@@ -94,6 +91,15 @@ if (todoForm) {
   });
 }
 
+// Bottone Reset
+const resetButton = document.getElementById("reset-todo");
+if (resetButton) {
+  resetButton.addEventListener("click", () => {
+    localStorage.removeItem("todoList");
+    todoList.innerHTML = "";
+  });
+}
+
 function aggiungiItem(nome, orario, prodotti, completato) {
   const li = document.createElement("li");
   li.innerHTML = `
@@ -105,6 +111,7 @@ function aggiungiItem(nome, orario, prodotti, completato) {
   checkbox.addEventListener("change", () => {
     li.classList.toggle("completed", checkbox.checked);
     salvaLista();
+    ordinaLista();
   });
 
   if (completato) li.classList.add("completed");
@@ -114,21 +121,23 @@ function aggiungiItem(nome, orario, prodotti, completato) {
 
 function ordinaLista() {
   const items = Array.from(todoList.children);
-  items.sort((a, b) => {
+  const incompleti = items.filter(li => !li.querySelector("input").checked);
+  const completi = items.filter(li => li.querySelector("input").checked);
+
+  incompleti.sort((a, b) => {
     const timeA = a.querySelector("strong").innerText;
     const timeB = b.querySelector("strong").innerText;
     return timeA.localeCompare(timeB);
   });
+
   todoList.innerHTML = "";
-  items.forEach(item => todoList.appendChild(item));
+  [...incompleti, ...completi].forEach(item => todoList.appendChild(item));
 }
 
 function salvaLista() {
   const dati = Array.from(todoList.children).map(li => {
     const testo = li.querySelector("span").innerText;
-    // Estraggo orario, nome e prodotti con regexp, gestendo il fatto che prodotti è opzionale
-    const match = testo.match(/^(\d{2}:\d{2})\s–\s(.+?)(?:\s\\(prodotti: (.+)\\))?$/) || 
-                  testo.match(/^(\d{2}:\d{2})\s–\s(.+)$/);
+    const match = testo.match(/^(\d{2}:\d{2})\s–\s(.+?)(?: \(prodotti: (.+)\))?$/);
     return {
       orario: match ? match[1] : "",
       nome: match ? match[2] : testo,
