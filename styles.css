@@ -1,45 +1,48 @@
-/* ——— Space Style CSS for Seller Coach AI ——— */
+/* Importa font Orbitron */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
 body {
-font-family: "Segoe UI", "Orbitron", sans-serif;
-background: radial-gradient(circle at top, #0b0c2a, #050517);
-color: #e0e3f5;
+font-family: 'Orbitron', sans-serif;
+background: radial-gradient(ellipse at top, #1a1c30 0%, #0a0c1a 100%);
+color: #e8eafd;
 margin: 0;
 padding: 0;
+background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234e4e6f' fill-opacity='0.3'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3Ccircle cx='10' cy='30' r='1'/%3E%3Ccircle cx='25' cy='8' r='1'/%3E%3Ccircle cx='30' cy='25' r='1'/%3E%3Ccircle cx='39' cy='10' r='1'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 header {
-background: linear-gradient(to right, #1f0036, #32004b);
+background: linear-gradient(to right, #302066, #45388c);
 color: #ffffff;
 padding: 1.2rem;
 text-align: center;
-font-size: 1.6rem;
+font-size: 1.7rem;
 letter-spacing: 1px;
-box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
 nav {
 display: flex;
 justify-content: center;
 gap: 1rem;
-background: #120c2d;
+background: #211e3f;
 padding: 1rem 0;
-border-bottom: 1px solid #292248;
+border-bottom: 1px solid #393664;
 }
 
 nav button {
 padding: 0.6rem 1.4rem;
 font-weight: bold;
 border: none;
-background: #2d1d71;
-color: #f1f1f1;
-border-radius: 6px;
+background: #5b4fe4;
+color: #fff;
+border-radius: 8px;
 cursor: pointer;
 transition: background 0.3s, transform 0.2s;
-box-shadow: 0 0 4px #5d50d1;
+box-shadow: 0 0 6px rgba(140, 130, 255, 0.6);
 }
 
 nav button:hover {
-background: #4431a2;
+background: #7c6df0;
 transform: scale(1.05);
 }
 
@@ -47,9 +50,9 @@ main.container {
 max-width: 900px;
 margin: 2rem auto;
 padding: 1.5rem;
-background: rgba(255, 255, 255, 0.02);
-border-radius: 12px;
-box-shadow: 0 0 20px rgba(93, 80, 209, 0.3);
+background: rgba(255, 255, 255, 0.03);
+border-radius: 14px;
+box-shadow: 0 0 20px rgba(100, 80, 230, 0.3);
 backdrop-filter: blur(6px);
 }
 
@@ -71,22 +74,27 @@ margin-top: 1rem;
 
 label {
 font-weight: bold;
-color: #c8caf5;
+color: #f0f0ff;
 }
 
-input, select, textarea, button {
+input,
+select,
+textarea,
+button {
 padding: 0.6rem;
 border-radius: 5px;
-border: 1px solid #4c4173;
-background: #19163a;
+border: 1px solid #5a58a0;
+background: #151631;
 color: #f0f2ff;
 font-size: 1rem;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
 outline: none;
-border-color: #725ee2;
-box-shadow: 0 0 5px #5d50d1;
+border-color: #9e90ff;
+box-shadow: 0 0 5px #7c6df0;
 }
 
 textarea {
@@ -94,8 +102,9 @@ resize: vertical;
 min-height: 60px;
 }
 
-button[type="submit"], button[type="button"] {
-background: #5d50d1;
+button[type='submit'],
+button[type='button'] {
+background: #7157f6;
 color: white;
 font-weight: bold;
 border: none;
@@ -103,8 +112,9 @@ cursor: pointer;
 transition: background 0.3s;
 }
 
-button[type="submit"]:hover, button[type="button"]:hover {
-background: #7e72ff;
+button[type='submit']:hover,
+button[type='button']:hover {
+background: #8d79ff;
 }
 
 #todo-list {
@@ -117,15 +127,16 @@ margin-top: 1rem;
 display: flex;
 justify-content: space-between;
 align-items: center;
-background: #241f4b;
+background: #242554;
 padding: 0.6rem 1rem;
-border-bottom: 1px solid #3a336b;
-border-radius: 5px;
+border-bottom: 1px solid #474987;
+border-radius: 6px;
 margin-bottom: 0.5rem;
+transition: background 0.2s;
 }
 
 #todo-list li.completed {
-background: #332f57;
+background: #393a6c;
 }
 
 #todo-list li.completed span {
@@ -136,22 +147,28 @@ opacity: 0.6;
 .output-box {
 margin-top: 1rem;
 padding: 1rem;
-background: #181532;
+background: #1d1d3c;
 border-radius: 6px;
-border: 1px solid #3a336b;
-color: #e8eaff;
+border: 1px solid #4a4791;
+color: #e9eaff;
 }
 
 @keyframes fadeIn {
-from { opacity: 0; transform: translateY(10px); }
-to { opacity: 1; transform: translateY(0); }
+from {
+opacity: 0;
+transform: translateY(10px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
 }
 
 footer {
 text-align: center;
 margin-top: 2rem;
 padding: 1rem;
-background: #0e0a20;
+background: #14152b;
 font-size: 0.9rem;
-color: #888bbd;
+color: #a6a8dc;
 }
