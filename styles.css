@@ -97,7 +97,7 @@ border-color: #9e90ff;
 box-shadow: 0 0 5px #7c6df0;
 }
 
-#consiglio-testo {
+consiglio-testo {
   color: #222; /* Colore scuro e leggibile */
   font-size: 1.2rem;
   margin-top: 1rem;
