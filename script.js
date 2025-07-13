@@ -19,6 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
     aggiungiItem(dato.nome, dato.orario, dato.prodotti, dato.completato);
   });
   ordinaLista();
+
+  // Assegna evento click al bottone "Genera Consiglio"
+  const bottoneConsiglio = document.getElementById("genera-consiglio");
+  if (bottoneConsiglio) {
+    bottoneConsiglio.addEventListener("click", generaConsiglio);
+  }
 });
 
 // ——— CONSIGLIO DEL GIORNO ———
