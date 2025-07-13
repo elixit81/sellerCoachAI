@@ -1,4 +1,27 @@
-// Funzione: Consiglio del Giorno
+// ——— GESTIONE TABS ———
+document.addEventListener("DOMContentLoaded", () => {
+  const tabButtons = document.querySelectorAll("nav button");
+  const sections = document.querySelectorAll("main section");
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = btn.getAttribute("data-target");
+
+      sections.forEach(sec => {
+        sec.classList.toggle("active", sec.id === target);
+      });
+    });
+  });
+
+  // Carica To Do Time da localStorage
+  const salvati = JSON.parse(localStorage.getItem("todoList")) || [];
+  salvati.forEach(dato => {
+    aggiungiItem(dato.nome, dato.orario, dato.prodotti, dato.completato);
+  });
+  ordinaLista();
+});
+
+// ——— CONSIGLIO DEL GIORNO ———
 async function generaConsiglio() {
   const output = document.getElementById("consiglio-testo");
   output.innerText = "Generazione in corso...";
@@ -22,7 +45,7 @@ async function generaConsiglio() {
   }
 }
 
-// Diario di Bordo & Coach AI
+// ——— DIARIO DI BORDO ———
 const form = document.getElementById("feedback-form");
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -59,20 +82,10 @@ form?.addEventListener("submit", async (e) => {
   }
 });
 
-// Avvia caricamento consiglio e carica lista To do Time al caricamento pagina
-document.addEventListener("DOMContentLoaded", () => {
-  generaConsiglio();
-
-  const salvati = JSON.parse(localStorage.getItem("todoList")) || [];
-  salvati.forEach(dato => {
-    aggiungiItem(dato.nome, dato.orario, dato.prodotti, dato.completato);
-  });
-  ordinaLista();
-});
-
-// Sezione TO DO TIME
+// ——— TO DO TIME ———
 const todoForm = document.getElementById("todo-form");
 const todoList = document.getElementById("todo-list");
+const resetButton = document.getElementById("reset-todo");
 
 if (todoForm) {
   todoForm.addEventListener("submit", function (e) {
@@ -91,8 +104,6 @@ if (todoForm) {
   });
 }
 
-// Bottone Reset
-const resetButton = document.getElementById("reset-todo");
 if (resetButton) {
   resetButton.addEventListener("click", () => {
     localStorage.removeItem("todoList");
