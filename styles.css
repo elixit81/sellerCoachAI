@@ -1,122 +1,157 @@
-/* STYLES.CSS - Seller Coach AI */
-
+/* ——— Space Style CSS for Seller Coach AI ——— */
 body {
-  font-family: Arial, sans-serif;
-  background: #f0f4f8;
-  margin: 0;
-  padding: 0;
-  color: #333;
+font-family: "Segoe UI", "Orbitron", sans-serif;
+background: radial-gradient(circle at top, #0b0c2a, #050517);
+color: #e0e3f5;
+margin: 0;
+padding: 0;
 }
 
 header {
-  background-color: #1e3a8a;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+background: linear-gradient(to right, #1f0036, #32004b);
+color: #ffffff;
+padding: 1.2rem;
+text-align: center;
+font-size: 1.6rem;
+letter-spacing: 1px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
-h1 {
-  margin: 0;
+nav {
+display: flex;
+justify-content: center;
+gap: 1rem;
+background: #120c2d;
+padding: 1rem 0;
+border-bottom: 1px solid #292248;
 }
 
-.container {
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+nav button {
+padding: 0.6rem 1.4rem;
+font-weight: bold;
+border: none;
+background: #2d1d71;
+color: #f1f1f1;
+border-radius: 6px;
+cursor: pointer;
+transition: background 0.3s, transform 0.2s;
+box-shadow: 0 0 4px #5d50d1;
+}
+
+nav button:hover {
+background: #4431a2;
+transform: scale(1.05);
+}
+
+main.container {
+max-width: 900px;
+margin: 2rem auto;
+padding: 1.5rem;
+background: rgba(255, 255, 255, 0.02);
+border-radius: 12px;
+box-shadow: 0 0 20px rgba(93, 80, 209, 0.3);
+backdrop-filter: blur(6px);
 }
 
 section {
-  margin-bottom: 40px;
+display: none;
 }
 
-h2 {
-  color: #1e3a8a;
-  margin-bottom: 20px;
+section.active {
+display: block;
+animation: fadeIn 0.4s ease-in-out;
+}
+
+form {
+display: flex;
+flex-direction: column;
+gap: 0.75rem;
+margin-top: 1rem;
 }
 
 label {
-  display: block;
-  margin: 12px 0 4px;
-  font-weight: bold;
+font-weight: bold;
+color: #c8caf5;
 }
 
-input, select, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
+input, select, textarea, button {
+padding: 0.6rem;
+border-radius: 5px;
+border: 1px solid #4c4173;
+background: #19163a;
+color: #f0f2ff;
+font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+outline: none;
+border-color: #725ee2;
+box-shadow: 0 0 5px #5d50d1;
 }
 
 textarea {
-  resize: vertical;
+resize: vertical;
+min-height: 60px;
 }
 
-button {
-  background-color: #2563eb;
-  color: #fff;
-  border: none;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: 10px;
+button[type="submit"], button[type="button"] {
+background: #5d50d1;
+color: white;
+font-weight: bold;
+border: none;
+cursor: pointer;
+transition: background 0.3s;
 }
 
-button:hover {
-  background-color: #1d4ed8;
+button[type="submit"]:hover, button[type="button"]:hover {
+background: #7e72ff;
+}
+
+#todo-list {
+list-style: none;
+padding: 0;
+margin-top: 1rem;
+}
+
+#todo-list li {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: #241f4b;
+padding: 0.6rem 1rem;
+border-bottom: 1px solid #3a336b;
+border-radius: 5px;
+margin-bottom: 0.5rem;
+}
+
+#todo-list li.completed {
+background: #332f57;
+}
+
+#todo-list li.completed span {
+text-decoration: line-through;
+opacity: 0.6;
 }
 
 .output-box {
-  margin-top: 20px;
-  padding: 15px;
-  background: #f3f4f6;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-style: italic;
+margin-top: 1rem;
+padding: 1rem;
+background: #181532;
+border-radius: 6px;
+border: 1px solid #3a336b;
+color: #e8eaff;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
 }
 
 footer {
-  background: #1e3a8a;
-  color: #fff;
-  text-align: center;
-  padding: 16px;
-  margin-top: 40px;
+text-align: center;
+margin-top: 2rem;
+padding: 1rem;
+background: #0e0a20;
+font-size: 0.9rem;
+color: #888bbd;
 }
-#todo-time {
-  margin-top: 2rem;
-}
-
-#todo-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.todo-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.todo-list li {
-  background: #eef;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border-left: 5px solid #007acc;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.todo-list li.completed {
-  background-color: #d4edda;
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
