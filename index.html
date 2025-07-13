@@ -6,7 +6,27 @@
   <title>Seller Coach AI</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Puoi anche spostarlo nel tuo styles.css */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    nav button {
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
     #todo-list li.completed span {
       text-decoration: line-through;
       opacity: 0.6;
@@ -18,9 +38,15 @@
     <h1>Seller Coach AI</h1>
   </header>
 
+  <nav>
+    <button data-target="consiglio-giorno">Consiglio del Giorno</button>
+    <button data-target="diario">Diario di Bordo</button>
+    <button data-target="todo-time">To do Time</button>
+  </nav>
+
   <main class="container">
     <!-- Modulo 1: Consiglio del Giorno -->
-    <section id="consiglio-giorno">
+    <section id="consiglio-giorno" class="active">
       <h2>Consiglio del Giorno</h2>
       <button onclick="generaConsiglio()">Genera Consiglio</button>
       <p id="consiglio-testo">Premi il pulsante per ricevere un consiglio AI!</p>
@@ -88,9 +114,10 @@
         <input type="text" id="todo-prodotti" />
 
         <button type="submit">Aggiungi</button>
-        <button type="button" id="reset-todo">Reset</button>
+        
       </form>
       <ul id="todo-list"></ul>
+      <button type="button" id="reset-todo">Reset</button>
     </section>
   </main>
 
