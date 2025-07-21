@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
 body {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Roboto', sans-serif; /* Font leggibile per tutto il testo */
   background: radial-gradient(ellipse at top, #1a1c30 0%, #0a0c1a 100%);
   color: #e8eafd;
   margin: 0;
@@ -15,6 +15,7 @@ header {
   color: #ffffff;
   padding: 1.2rem;
   text-align: center;
+  font-family: 'Orbitron', sans-serif;
   font-size: 1.7rem;
   letter-spacing: 1px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
