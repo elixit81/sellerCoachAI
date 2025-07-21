@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let todos = [];
 
   function renderTodos() {
+    // Ordina i todos per orario crescente
+    todos.sort((a, b) => a.orario.localeCompare(b.orario));
+
     todoList.innerHTML = '';
     todos.forEach((todo, index) => {
       const li = document.createElement('li');
@@ -71,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('todo-nome').value = todo.nome;
         document.getElementById('todo-orario').value = todo.orario;
         document.getElementById('todo-prodotti').value = todo.prodotti;
-        todos.splice(index, 1); // rimuove temporaneamente per poi riaggiungere modificato
+        todos.splice(index, 1); // Rimuove l'elemento per reinserirlo modificato
         renderTodos();
       });
 
