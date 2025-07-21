@@ -150,12 +150,12 @@ button[type='button']:hover {
   background: #1d1d3c;
   border-radius: 6px;
   border: 1px solid #4a4791;
-  color: #ffd95e; /* Giallo leggibile */
+  color: #2c2c2c; /* Grigio antracite */
 }
 
 /* Corretto: selettore valido per la risposta combo */
 .consiglio-testo {
-  color: #ffd95e; /* Giallo ben visibile */
+  color: #2c2c2c; /* Grigio antracite */
   font-size: 1.2rem;
   margin-top: 1rem;
 }
