@@ -164,3 +164,64 @@ function salvaLista() {
   });
   localStorage.setItem("todoList", JSON.stringify(dati));
 }
+
+// Suggerisce combinazioni per un menu o un a vendita abbinata
+document.addEventListener("DOMContentLoaded", () => {
+  const comboBtn = document.getElementById("combo-btn");
+  const outputDiv = document.getElementById("combo-output");
+
+  comboBtn.addEventListener("click", async () => {
+    outputDiv.innerHTML = "Analisi in corso...";
+
+    try {
+      // File da caricare
+      const fileNames = [
+        "catalogo_pesce.json",
+        "catalogo_carne.json",
+        "catalogo_verdure.json",
+        "catalogo_sughi.json",
+        "catalogo_freschi.json",
+        "catalogo_integratori.json",
+        "catalogo_patate.json"
+      ];
+
+      // Carica tutti i cataloghi in parallelo
+      const fileData = await Promise.all(
+        fileNames.map(name =>
+          fetch(name)
+            .then(res => res.json())
+            .catch(() => {
+              console.error(`Errore nel file ${name}`);
+              return [];
+            })
+        )
+      );
+
+      const prodotti = fileData.flat();
+
+      // Prompt per OpenAI
+      const prompt = `
+Hai a disposizione questi prodotti del catalogo divisi per categoria. Suggerisci 3 combinazioni interessanti per un pranzo o una cena, includendo eventualmente un primo, un secondo o un contorno. Rendi gli abbinamenti adatti a persone comuni, in modo equilibrato e con buona varietà.
+
+Prodotti:
+${JSON.stringify(prodotti, null, 2)}
+`;
+
+      // Chiamata al backend
+      const response = await fetch("/api/coach-ai.js", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ prompt })
+      });
+
+      const data = await response.json();
+      outputDiv.innerHTML = `<pre>${data.risposta || "Nessuna risposta ricevuta."}</pre>`;
+    } catch (error) {
+      console.error("Errore nella generazione delle combo:", error);
+      outputDiv.innerHTML = "Errore nella generazione delle combinazioni.";
+    }
+  });
+});
+
