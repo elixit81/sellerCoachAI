@@ -6,24 +6,26 @@ document.addEventListener("DOMContentLoaded", () => {
   tabButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       const target = btn.getAttribute("data-target");
-
       sections.forEach(sec => {
         sec.classList.toggle("active", sec.id === target);
       });
     });
   });
 
-  // Carica To Do Time da localStorage
   const salvati = JSON.parse(localStorage.getItem("todoList")) || [];
   salvati.forEach(dato => {
     aggiungiItem(dato.nome, dato.orario, dato.prodotti, dato.completato);
   });
   ordinaLista();
 
-  // Assegna evento click al bottone "Genera Consiglio"
   const bottoneConsiglio = document.getElementById("genera-consiglio");
   if (bottoneConsiglio) {
     bottoneConsiglio.addEventListener("click", generaConsiglio);
+  }
+
+  const comboButton = document.getElementById("btn-combo");
+  if (comboButton) {
+    comboButton.addEventListener("click", suggerisciCombo);
   }
 });
 
@@ -55,7 +57,6 @@ async function generaConsiglio() {
 const form = document.getElementById("feedback-form");
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   const cliente = document.getElementById("cliente").value;
   const clima = document.getElementById("clima").value;
   const obiettivo = document.getElementById("obiettivo").value;
@@ -63,9 +64,7 @@ form?.addEventListener("submit", async (e) => {
   const obiezione = document.getElementById("obiezione").value;
   const miaRisposta = document.getElementById("mia-risposta").value;
   const esito = document.getElementById("esito").value;
-
   const messaggio = `Cliente: ${cliente}\nClima: ${clima}\nObiettivo: ${obiettivo}\nProdotti: ${prodotti}\nObiezione: ${obiezione}\nRisposta: ${miaRisposta}\nEsito: ${esito}`;
-
   const output = document.getElementById("analisi-output");
   output.innerText = "Analisi in corso...";
 
@@ -73,14 +72,9 @@ form?.addEventListener("submit", async (e) => {
     const res = await fetch("/api/coach-ai", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        type: "analisi",
-        prompt: messaggio
-      })
+      body: JSON.stringify({ type: "analisi", prompt: messaggio })
     });
-
     if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
-
     const data = await res.json();
     output.innerText = data.result || "Errore durante l'analisi.";
   } catch (error) {
@@ -96,13 +90,10 @@ const resetButton = document.getElementById("reset-todo");
 if (todoForm) {
   todoForm.addEventListener("submit", function (e) {
     e.preventDefault();
-
     const nome = document.getElementById("todo-nome").value.trim();
     const orario = document.getElementById("todo-orario").value;
     const prodotti = document.getElementById("todo-prodotti").value.trim();
-
     if (!nome || !orario) return;
-
     aggiungiItem(nome, orario, prodotti, false);
     salvaLista();
     todoForm.reset();
@@ -119,20 +110,14 @@ if (resetButton) {
 
 function aggiungiItem(nome, orario, prodotti, completato) {
   const li = document.createElement("li");
-  li.innerHTML = `
-    <span><strong>${orario}</strong> – ${nome}${prodotti ? ` (prodotti: ${prodotti})` : ""}</span>
-    <input type="checkbox" ${completato ? "checked" : ""} />
-  `;
-
+  li.innerHTML = `<span><strong>${orario}</strong> – ${nome}${prodotti ? ` (prodotti: ${prodotti})` : ""}</span><input type="checkbox" ${completato ? "checked" : ""} />`;
   const checkbox = li.querySelector("input");
   checkbox.addEventListener("change", () => {
     li.classList.toggle("completed", checkbox.checked);
     salvaLista();
     ordinaLista();
   });
-
   if (completato) li.classList.add("completed");
-
   todoList.appendChild(li);
 }
 
@@ -140,13 +125,11 @@ function ordinaLista() {
   const items = Array.from(todoList.children);
   const incompleti = items.filter(li => !li.querySelector("input").checked);
   const completi = items.filter(li => li.querySelector("input").checked);
-
   incompleti.sort((a, b) => {
     const timeA = a.querySelector("strong").innerText;
     const timeB = b.querySelector("strong").innerText;
     return timeA.localeCompare(timeB);
   });
-
   todoList.innerHTML = "";
   [...incompleti, ...completi].forEach(item => todoList.appendChild(item));
 }
@@ -165,65 +148,42 @@ function salvaLista() {
   localStorage.setItem("todoList", JSON.stringify(dati));
 }
 
-// Suggerisce combinazioni per un menu o un a vendita abbinata
-
+// ——— COMBO ———
 async function suggerisciCombo() {
-document.addEventListener("DOMContentLoaded", () => {
-  const comboBtn = document.getElementById("combo-btn");
   const outputDiv = document.getElementById("combo-output");
+  outputDiv.innerHTML = "Analisi in corso...";
+  try {
+    const fileNames = [
+      "catalogo_pesce.json",
+      "catalogo_carne.json",
+      "catalogo_verdure.json",
+      "catalogo_sughi.json",
+      "catalogo_freschi.json",
+      "catalogo_integratori.json",
+      "catalogo_patate.json"
+    ];
 
-  comboBtn.addEventListener("click", async () => {
-    outputDiv.innerHTML = "Analisi in corso...";
+    const fileData = await Promise.all(
+      fileNames.map(name =>
+        fetch(name).then(res => res.json()).catch(() => [])
+      )
+    );
 
-    try {
-      // File da caricare
-      const fileNames = [
-        "catalogo_pesce.json",
-        "catalogo_carne.json",
-        "catalogo_verdure.json",
-        "catalogo_sughi.json",
-        "catalogo_freschi.json",
-        "catalogo_integratori.json",
-        "catalogo_patate.json"
-      ];
+    const prodotti = fileData.flat();
+    const prompt = `Hai a disposizione questi prodotti del catalogo divisi per categoria. Suggerisci 3 combinazioni interessanti per un pranzo o una cena, includendo eventualmente un primo, un secondo o un contorno. Rendi gli abbinamenti adatti a persone comuni, in modo equilibrato e con buona varietà.\n\nProdotti:\n${JSON.stringify(prodotti, null, 2)}`;
 
-      // Carica tutti i cataloghi in parallelo
-      const fileData = await Promise.all(
-        fileNames.map(name =>
-          fetch(name)
-            .then(res => res.json())
-            .catch(() => {
-              console.error(`Errore nel file ${name}`);
-              return [];
-            })
-        )
-      );
+    const response = await fetch("/api/coach-ai", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ prompt })
+    });
 
-      const prodotti = fileData.flat();
-
-      // Prompt per OpenAI
-      const prompt = `
-Hai a disposizione questi prodotti del catalogo divisi per categoria. Suggerisci 3 combinazioni interessanti per un pranzo o una cena, includendo eventualmente un primo, un secondo o un contorno. Rendi gli abbinamenti adatti a persone comuni, in modo equilibrato e con buona varietà.
-
-Prodotti:
-${JSON.stringify(prodotti, null, 2)}
-`;
-
-      // Chiamata al backend
-      const response = await fetch("/api/coach-ai.js", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ prompt })
-      });
-
-      const data = await response.json();
-      outputDiv.innerHTML = `<pre>${data.risposta || "Nessuna risposta ricevuta."}</pre>`;
-    } catch (error) {
-      console.error("Errore nella generazione delle combo:", error);
-      outputDiv.innerHTML = "Errore nella generazione delle combinazioni.";
-    }
-  });
-}});
-
+    const data = await response.json();
+    outputDiv.innerHTML = `<pre>${data.result || "Nessuna risposta ricevuta."}</pre>`;
+  } catch (error) {
+    console.error("Errore nella generazione delle combo:", error);
+    outputDiv.innerHTML = "Errore nella generazione delle combinazioni.";
+  }
+}
