@@ -36,6 +36,88 @@ async function generaConsiglio() {
     el.innerText = "Errore: " + e.message;
   }
 }
+// =======================
+// Sezione To Do Time
+// =======================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const todoForm = document.getElementById('todo-form');
+  const todoList = document.getElementById('todo-list');
+  const resetBtn = document.getElementById('reset-todo');
+
+  let todos = [];
+
+  function renderTodos() {
+    todoList.innerHTML = '';
+    todos.forEach((todo, index) => {
+      const li = document.createElement('li');
+      li.className = todo.completed ? 'completed' : '';
+
+      const span = document.createElement('span');
+      span.textContent = `${todo.orario} - ${todo.nome}${todo.prodotti ? ' [' + todo.prodotti + ']' : ''}`;
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.checked = todo.completed;
+      checkbox.addEventListener('change', () => {
+        todo.completed = checkbox.checked;
+        renderTodos();
+      });
+
+      const editBtn = document.createElement('button');
+      editBtn.textContent = '✏️';
+      editBtn.style.marginLeft = '10px';
+      editBtn.addEventListener('click', () => {
+        document.getElementById('todo-nome').value = todo.nome;
+        document.getElementById('todo-orario').value = todo.orario;
+        document.getElementById('todo-prodotti').value = todo.prodotti;
+        todos.splice(index, 1); // rimuove temporaneamente per poi riaggiungere modificato
+        renderTodos();
+      });
+
+      const actions = document.createElement('div');
+      actions.appendChild(checkbox);
+      actions.appendChild(editBtn);
+
+      li.appendChild(span);
+      li.appendChild(actions);
+      li.style.display = 'flex';
+      li.style.justifyContent = 'space-between';
+      li.style.alignItems = 'center';
+
+      todoList.appendChild(li);
+    });
+  }
+
+  todoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById('todo-nome').value.trim();
+    const orario = document.getElementById('todo-orario').value;
+    const prodotti = document.getElementById('todo-prodotti').value.trim();
+
+    if (nome && orario) {
+      todos.push({
+        nome,
+        orario,
+        prodotti,
+        completed: false,
+      });
+
+      todoForm.reset();
+      renderTodos();
+    }
+  });
+
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Vuoi davvero cancellare tutte le attività?')) {
+      todos = [];
+      renderTodos();
+    }
+  });
+
+  renderTodos();
+});
 
 // 🔹 Funzione per suggerire combo da pranzo/cena analizzando i cataloghi
 async function suggerisciCombo() {
