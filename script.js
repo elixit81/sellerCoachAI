@@ -166,6 +166,8 @@ function salvaLista() {
 }
 
 // Suggerisce combinazioni per un menu o un a vendita abbinata
+
+async function suggerisciCombo() {
 document.addEventListener("DOMContentLoaded", () => {
   const comboBtn = document.getElementById("combo-btn");
   const outputDiv = document.getElementById("combo-output");
@@ -223,5 +225,5 @@ ${JSON.stringify(prodotti, null, 2)}
       outputDiv.innerHTML = "Errore nella generazione delle combinazioni.";
     }
   });
-});
+}});
 
