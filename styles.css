@@ -1,54 +1,48 @@
-/* Importa font fantasy */
-@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Roboto&display=swap');
+/* Font decorativo leggibile per titoli */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: radial-gradient(ellipse at top, #1a1c30 0%, #0a0c1a 100%);
-  color: #f3f5ff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #0d1117, #161b22);
+  color: #f1f1f1;
   margin: 0;
   padding: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234e4e6f' fill-opacity='0.3'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3Ccircle cx='10' cy='30' r='1'/%3E%3Ccircle cx='25' cy='8' r='1'/%3E%3Ccircle cx='30' cy='25' r='1'/%3E%3Ccircle cx='39' cy='10' r='1'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 header {
-  background: linear-gradient(to right, #4a296e, #6e4db3);
+  background: linear-gradient(to right, #372058, #4c3480);
   color: #ffffff;
-  padding: 1.2rem;
+  padding: 1.5rem;
   text-align: center;
-  font-family: 'Uncial Antiqua', cursive;
+  font-family: 'UnifrakturCook', cursive;
   font-size: 2rem;
   letter-spacing: 1px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-
-h1, h2, h3 {
-  font-family: 'Uncial Antiqua', cursive;
-  color: #f0dfff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
 }
 
 nav {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  background: #211e3f;
+  background: #1e1b3b;
   padding: 1rem 0;
-  border-bottom: 1px solid #393664;
+  border-bottom: 1px solid #34306b;
 }
 
 nav button {
   padding: 0.6rem 1.4rem;
   font-weight: bold;
   border: none;
-  background: #5b4fe4;
-  color: #fff;
+  background: #5e4ae3;
+  color: #ffffff;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
-  box-shadow: 0 0 6px rgba(140, 130, 255, 0.6);
+  box-shadow: 0 0 8px rgba(140, 130, 255, 0.5);
 }
 
 nav button:hover {
-  background: #7c6df0;
+  background: #7a63f1;
   transform: scale(1.05);
 }
 
@@ -56,10 +50,10 @@ main.container {
   max-width: 900px;
   margin: 2rem auto;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: #1c1c2d;
   border-radius: 14px;
-  box-shadow: 0 0 20px rgba(100, 80, 230, 0.3);
-  backdrop-filter: blur(6px);
+  box-shadow: 0 0 30px rgba(130, 110, 240, 0.2);
+  backdrop-filter: blur(4px);
 }
 
 section {
@@ -80,7 +74,7 @@ form {
 
 label {
   font-weight: bold;
-  color: #f0f0ff;
+  color: #ffffff;
 }
 
 input,
@@ -89,9 +83,9 @@ textarea,
 button {
   padding: 0.6rem;
   border-radius: 5px;
-  border: 1px solid #5a58a0;
-  background: #151631;
-  color: #f0f2ff;
+  border: 1px solid #6c63b8;
+  background: #0e101c;
+  color: #ffffff;
   font-size: 1rem;
 }
 
@@ -99,8 +93,8 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #9e90ff;
-  box-shadow: 0 0 5px #7c6df0;
+  border-color: #b29dff;
+  box-shadow: 0 0 5px #937df5;
 }
 
 textarea {
@@ -133,16 +127,16 @@ button[type='button']:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #242554;
+  background: #2a2c4e;
   padding: 0.6rem 1rem;
-  border-bottom: 1px solid #474987;
+  border-bottom: 1px solid #484b7d;
   border-radius: 6px;
   margin-bottom: 0.5rem;
   transition: background 0.2s;
 }
 
 #todo-list li.completed {
-  background: #393a6c;
+  background: #3c3f6d;
 }
 
 #todo-list li.completed span {
@@ -153,17 +147,16 @@ button[type='button']:hover {
 .output-box {
   margin-top: 1rem;
   padding: 1rem;
-  background: #1d1d3c;
+  background: #1e1f3a;
   border-radius: 6px;
-  border: 1px solid #4a4791;
-  color: #f2f2f2;
+  border: 1px solid #5c5ac3;
+  color: #ffffff;
 }
 
 .consiglio-testo {
-  color: #fff;
-  font-size: 1.3rem;
+  color: #eeeeee;
+  font-size: 1.2rem;
   margin-top: 1rem;
-  font-family: 'Roboto', sans-serif;
 }
 
 @keyframes fadeIn {
@@ -181,7 +174,7 @@ footer {
   text-align: center;
   margin-top: 2rem;
   padding: 1rem;
-  background: #14152b;
+  background: #16162e;
   font-size: 0.9rem;
-  color: #aaa;
+  color: #bbbbbb;
 }
