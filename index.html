@@ -42,14 +42,14 @@
     <button data-target="consiglio-giorno">Consiglio del Giorno</button>
     <button data-target="diario">Diario di Bordo</button>
     <button data-target="todo-time">To do Time</button>
-    <button data-target="combo-btn">Combo</button>
+    <button data-target="combo">Combo</button>
   </nav>
 
   <main class="container">
     <!-- Modulo 1: Consiglio del Giorno -->
     <section id="consiglio-giorno">
       <h2>Consiglio del Giorno</h2>
-      <button id="btn-consiglio" onclick="generaConsiglio()">Genera Consiglio</button>
+      <button id="btn-consiglio">Genera Consiglio</button>
       <p id="consiglio-testo">Premi il pulsante per ricevere un consiglio AI!</p>
     </section>
 
@@ -57,6 +57,7 @@
     <section id="diario">
       <h2>Diario di Bordo & Coach AI</h2>
       <form id="feedback-form">
+        <!-- (campi già presenti) -->
         <label for="cliente">Cliente:</label>
         <input type="text" id="cliente" required />
 
@@ -119,11 +120,12 @@
       <ul id="todo-list"></ul>
       <button type="button" id="reset-todo">Reset</button>
     </section>
+
     <!-- Sezione Combo -->
-    <section id="combo-bnt">
+    <section id="combo">
       <h2>Combo</h2>
-      <button id="btn-combo" onclick="SuggerisciCombo()">Suggerisci combo</button>
-      <p id="suggerimento-testo">Premi il pulsante per ricevere un consiglio AI!</p>
+      <button id="btn-combo">Suggerisci combo</button>
+      <p id="combo-output">Premi il pulsante per ricevere un consiglio AI!</p>
     </section>
   </main>
 
