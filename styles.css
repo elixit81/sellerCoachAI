@@ -1,24 +1,29 @@
-/* Importa font Orbitron */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+/* Importa font fantasy */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Roboto&display=swap');
 
 body {
-  font-family: 'Roboto', sans-serif; /* Font leggibile per tutto il testo */
+  font-family: 'Roboto', sans-serif;
   background: radial-gradient(ellipse at top, #1a1c30 0%, #0a0c1a 100%);
-  color: #e8eafd;
+  color: #f3f5ff;
   margin: 0;
   padding: 0;
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234e4e6f' fill-opacity='0.3'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3Ccircle cx='10' cy='30' r='1'/%3E%3Ccircle cx='25' cy='8' r='1'/%3E%3Ccircle cx='30' cy='25' r='1'/%3E%3Ccircle cx='39' cy='10' r='1'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 header {
-  background: linear-gradient(to right, #302066, #45388c);
+  background: linear-gradient(to right, #4a296e, #6e4db3);
   color: #ffffff;
   padding: 1.2rem;
   text-align: center;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.7rem;
+  font-family: 'Uncial Antiqua', cursive;
+  font-size: 2rem;
   letter-spacing: 1px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+h1, h2, h3 {
+  font-family: 'Uncial Antiqua', cursive;
+  color: #f0dfff;
 }
 
 nav {
@@ -51,7 +56,7 @@ main.container {
   max-width: 900px;
   margin: 2rem auto;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 14px;
   box-shadow: 0 0 20px rgba(100, 80, 230, 0.3);
   backdrop-filter: blur(6px);
@@ -151,14 +156,14 @@ button[type='button']:hover {
   background: #1d1d3c;
   border-radius: 6px;
   border: 1px solid #4a4791;
-  color: #2c2c2c; /* Grigio antracite */
+  color: #f2f2f2;
 }
 
-/* Corretto: selettore valido per la risposta combo */
 .consiglio-testo {
-  color: #2c2c2c; /* Grigio antracite */
-  font-size: 1.2rem;
+  color: #fff;
+  font-size: 1.3rem;
   margin-top: 1rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 @keyframes fadeIn {
@@ -178,5 +183,5 @@ footer {
   padding: 1rem;
   background: #14152b;
   font-size: 0.9rem;
-  color: #2c2c2c; /* Grigio antracite */
+  color: #aaa;
 }
