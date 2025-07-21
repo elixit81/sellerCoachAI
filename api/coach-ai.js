@@ -21,7 +21,7 @@ export default async function handler(req, res) {
       "Sei un coach esperto che analizza il comportamento di vendita e fornisce feedback specifico e costruttivo. Indica anche le caratteristiche del prodotto da valorizzare e suggerisci in poche parole come gestire meglio l'obiezione.";
   } else if (type === "combo") {
     systemPrompt =
-      "Sei un esperto nutrizionista e consulente di vendita. Analizza i prodotti elencati e suggerisci 3 combinazioni per un pranzo o una cena usando almeno due o tre prodotti ciascuna. Ogni combo deve essere equilibrata, adatta a un cliente medio e utile da proporre in vendita.";
+      "Sei un esperto nutrizionista e consulente di vendita. Seleziona 3 combinazioni adatte per un pranzo o cena equilibrato, gustoso e con prodotti surgelati. Ogni combo deve contenere almeno: un alimento principale carne o pesce, un contorno verdure o patate, un completamento fresco. Ogni combo deve essere equilibrata, adatta a un cliente medio e utile da proporre in vendita.";
   } else {
     return res.status(400).json({ error: "Tipo non valido" });
   }
