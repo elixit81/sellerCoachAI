@@ -1,0 +1,139 @@
+{
+  "integratori": [
+    {
+      "id": "7357",
+      "nome": "Fermenti Lattici",
+      "peso": "45 g",
+      "prezzo": "€11,99",
+      "descrizione": "Integratore alimentare a base di fermenti lattici vivi, utile per favorire l'equilibrio della flora intestinale.",
+      "modalita_d_uso": "Assumere una capsula al giorno, preferibilmente durante i pasti.",
+      "ingredienti": ["Fermenti lattici vivi"]
+    },
+    {
+      "id": "7374",
+      "nome": "Magnesio & Potassio con Vitamina B5 e B6",
+      "peso": "250 g",
+      "prezzo": "€14,99",
+      "descrizione": "Integratore alimentare che combina magnesio, potassio e vitamine B5 e B6 per supportare la funzione muscolare e ridurre la stanchezza.",
+      "modalita_d_uso": "Sciogliere una dose in un bicchiere d'acqua e assumere una volta al giorno.",
+      "ingredienti": ["Magnesio", "Potassio", "Vitamina B5", "Vitamina B6"]
+    },
+    {
+      "id": "7354",
+      "nome": "Melatonina Compresse Bistrato",
+      "peso": "15 g",
+      "prezzo": "€12,99",
+      "descrizione": "Integratore alimentare a base di melatonina, utile per favorire il sonno e il rilassamento.",
+      "modalita_d_uso": "Assumere una compressa 30 minuti prima di coricarsi.",
+      "ingredienti": ["Melatonina"]
+    },
+    {
+      "id": "7366",
+      "nome": "Collagene & Vitamina B3",
+      "peso": "280 ml",
+      "prezzo": "€19,99",
+      "descrizione": "Integratore alimentare in gel a base di collagene idrolizzato e vitamina B3, utile per il benessere della pelle.",
+      "modalita_d_uso": "Assumere una bustina al giorno, preferibilmente al mattino.",
+      "ingredienti": ["Collagene idrolizzato", "Vitamina B3"]
+    },
+    {
+      "id": "7368",
+      "nome": "Riso Viola e Amaranto",
+      "peso": "44 g",
+      "prezzo": "€13,99",
+      "descrizione": "Integratore alimentare a base di riso viola e amaranto, utile per il metabolismo del colesterolo.",
+      "modalita_d_uso": "Assumere una compressa al giorno.",
+      "ingredienti": ["Riso viola", "Amaranto"]
+    },
+    {
+      "id": "7364",
+      "nome": "Magnesio & B6",
+      "peso": "250 g",
+      "prezzo": "€18,99",
+      "descrizione": "Integratore alimentare a base di magnesio e vitamina B6, utile per ridurre la stanchezza e favorire la funzione muscolare.",
+      "modalita_d_uso": "Sciogliere una dose in un bicchiere d'acqua e assumere una volta al giorno.",
+      "ingredienti": ["Magnesio", "Vitamina B6"]
+    },
+    {
+      "id": "7367",
+      "nome": "Omega 3",
+      "peso": "81 g",
+      "prezzo": "€15,99",
+      "descrizione": "Integratore alimentare a base di acidi grassi omega-3, utile per la normale funzione cardiaca.",
+      "modalita_d_uso": "Assumere una perla al giorno.",
+      "ingredienti": ["Acidi grassi omega-3"]
+    },
+    {
+      "id": "25463",
+      "nome": "Shopper VitalBliss",
+      "peso": "1 pz",
+      "prezzo": "€0,20",
+      "descrizione": "Borsa shopper riutilizzabile per il trasporto dei prodotti VitalBliss.",
+      "modalita_d_uso": "Utilizzare per il trasporto dei prodotti.",
+      "ingredienti": []
+    },
+    {
+      "id": "7355",
+      "nome": "Melatonina Bustine",
+      "peso": "120 g",
+      "prezzo": "€14,99",
+      "descrizione": "Integratore alimentare in bustine a base di melatonina, utile per favorire il sonno.",
+      "modalita_d_uso": "Assumere una bustina 30 minuti prima di coricarsi.",
+      "ingredienti": ["Melatonina"]
+    },
+    {
+      "id": "7356",
+      "nome": "Fermenti Lattici & Vitamine",
+      "peso": "5 g",
+      "prezzo": "€14,99",
+      "descrizione": "Integratore alimentare a base di fermenti lattici vivi e vitamine, utile per l'equilibrio intestinale e il supporto del sistema immunitario.",
+      "modalita_d_uso": "Assumere una dose al giorno, preferibilmente durante i pasti.",
+      "ingredienti": ["Fermenti lattici vivi", "Vitamine"]
+    },
+    {
+      "id": "7361",
+      "nome": "MultiGums",
+      "peso": "42 g",
+      "prezzo": "€14,99",
+      "descrizione": "Integratore alimentare in forma di gomma da masticare, utile per fornire un apporto multivitaminico quotidiano.",
+      "modalita_d_uso": "Masticare una gomma al giorno.",
+      "ingredienti": ["Vitamine"]
+    },
+    {
+      "id": "7362",
+      "nome": "Vitamine D3 & K2 Compresse",
+      "peso": "17 g",
+      "prezzo": "€12,99",
+      "descrizione": "Integratore alimentare a base di vitamine D3 e K2, utile per il sistema immunitario e la salute delle ossa.",
+      "modalita_d_uso": "Assumere una compressa al giorno.",
+      "ingredienti": ["Vitamina D3", "Vitamina K2"]
+    },
+    {
+      "id": "7359",
+      "nome": "Enzimi Digestivi",
+      "peso": "50 g",
+      "prezzo": "€10,99",
+      "descrizione": "Integratore alimentare a base di enzimi digestivi, utile per favorire la digestione.",
+      "modalita_d_uso": "Assumere una capsula prima dei pasti principali.",
+      "ingredienti": ["Enzimi digestivi"]
+    },
+    {
+      "id": "7360",
+      "nome": "Multivitaminico",
+      "peso": "36 g",
+      "prezzo": "€16,99",
+      "descrizione": "Integratore alimentare a base di un ampio spettro di vitamine, utile per il benessere quotidiano.",
+      "modalita_d_uso": "Assumere una compressa al giorno.",
+      "ingredienti": ["Vitamine"]
+    },
+    {
+      "id": "7365",
+      "nome": "Collagene & Vitamina C",
+      "peso": "70 g",
+      "prezzo": "€13,99",
+      "descrizione": "Integratore alimentare in polvere a base di collagene e vitamina C, utile per la bellezza della pelle.",
+      "modalita_d_uso": "Sciogliere una dose in un bicchiere d'acqua e assumere una volta al giorno.",
+      "ingredienti": ["Collagene", "Vitamina C"]
+    }
+  ]
+}

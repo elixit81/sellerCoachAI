@@ -1,0 +1,121 @@
+{
+  "patate_e_patate": [
+    {
+      "id": "15668",
+      "nome": "Patate Express",
+      "peso": "500 g",
+      "prezzo": "€5,50",
+      "descrizione": "Patate surgelate pronte da cuocere in forno o friggitrice ad aria.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 8 minuti (forno statico 17 minuti) o in friggitrice ad aria a 180°C per circa 6 minuti.",
+      "ingredienti": ["Patate"]
+    },
+    {
+      "id": "15656",
+      "nome": "Patate a Fette",
+      "peso": "1000 g",
+      "prezzo": "€6,30",
+      "descrizione": "Patate tagliate a sottili fette, ideali per forno o padella.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 18 minuti (forno statico 30 minuti) o in padella con olio per circa 6 minuti.",
+      "ingredienti": ["Patate", "Olio di semi di girasole 4,6%", "Destrosio"]
+    },
+    {
+      "id": "5658",
+      "nome": "Patate a Spicchi",
+      "peso": "1000 g",
+      "prezzo": "€6,20",
+      "descrizione": "Patate tagliate a spicchi, pronte per essere cotte al forno o in padella.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 35 minuti (forno statico 45 minuti) o in padella con olio per circa 13 minuti.",
+      "ingredienti": ["Patate"]
+    },
+    {
+      "id": "5683",
+      "nome": "Patatine Julienne",
+      "peso": "1000 g",
+      "prezzo": "€6,99",
+      "descrizione": "Patate tagliate a julienne, pronte per essere cotte in forno, padella o friggitrice.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 22 minuti (forno statico 34 minuti), in padella con olio per circa 6 minuti, o in friggitrice ad aria a 180°C per circa 12 minuti.",
+      "ingredienti": ["Patate"]
+    },
+    {
+      "id": "5651",
+      "nome": "Patate a Bastoncino Extra da Forno",
+      "peso": "1000 g",
+      "prezzo": "€6,50",
+      "descrizione": "Patate a bastoncino, ideali per essere cotte al forno.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 20 minuti (forno statico 30 minuti).",
+      "ingredienti": ["Patate"]
+    },
+    {
+      "id": "5657",
+      "nome": "Patatine 'Leggere'*",
+      "peso": "1000 g",
+      "prezzo": "€6,99",
+      "descrizione": "Patatine a bastoncino con almeno il 30% di grassi in meno rispetto alla media delle patate a bastoncino prefritte surgelate più vendute.",
+      "modalita_d_uso": "Cuocere in forno in pochi minuti.",
+      "ingredienti": ["Patate"]
+    },
+    {
+      "id": "5665",
+      "nome": "Patate Duchessa",
+      "peso": "1000 g",
+      "prezzo": "€7,99",
+      "descrizione": "Patate duchessa, pronte per essere cotte in forno.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 15 minuti (forno statico 20 minuti).",
+      "ingredienti": ["Patate"]
+    },
+    {
+      "id": "9297",
+      "nome": "Patate al Rosmarino",
+      "peso": "1000 g",
+      "prezzo": "€7,30",
+      "descrizione": "Patate grigliate con rosmarino, surgelate.",
+      "modalita_d_uso": "Cuocere in forno.",
+      "ingredienti": ["Patate", "Rosmarino 1%"]
+    },
+    {
+      "id": "15667",
+      "nome": "Pronto Purè",
+      "peso": "1000 g",
+      "prezzo": "€6,99",
+      "descrizione": "Purè di patate pronto da riscaldare.",
+      "modalita_d_uso": "Riscaldare in pentola o microonde.",
+      "ingredienti": ["Patate"]
+    },
+    {
+      "id": "5669",
+      "nome": "Rostini Caserecci",
+      "peso": "600 g",
+      "prezzo": "€6,50",
+      "descrizione": "Rostini di patate caserecci, pronti per essere cotti.",
+      "modalita_d_uso": "Cuocere in forno.",
+      "ingredienti": ["Patate"]
+    },
+    {
+      "id": "5673",
+      "nome": "Rostini Caserecci con Speck",
+      "peso": "600 g",
+      "prezzo": "€6,99",
+      "descrizione": "Rostini di patate con speck, pronti per essere cotti.",
+      "modalita_d_uso": "Cuocere in forno.",
+      "ingredienti": ["Patate", "Speck"]
+    },
+    {
+      "id": "3389",
+      "nome": "Crocchette",
+      "peso": "1000 g",
+      "prezzo": "€7,99",
+      "descrizione": "Crocchette di patate, pronte per essere cotte.",
+      "modalita_d_uso": "Cuocere in forno o friggitrice.",
+      "ingredienti": ["Patate"]
+    },
+    {
+      "id": "15661",
+      "nome": "Patate Dippy",
+      "peso": "750 g",
+      "prezzo": "€5,70",
+      "descrizione": "Patate Dippy, pronte per essere cotte.",
+      "modalita_d_uso": "Cuocere in forno.",
+      "ingredienti": ["Patate"]
+    }
+  ]
+}

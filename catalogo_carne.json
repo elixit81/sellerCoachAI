@@ -1,0 +1,121 @@
+{
+  "carne": [
+    {
+      "id": "17370",
+      "nome": "Bacon",
+      "peso": "230 g",
+      "prezzo": "€8,99",
+      "descrizione": "Fette di bacon surgelato, pronte per essere cotte.",
+      "modalita_d_uso": "Cuocere in padella o al forno fino a doratura.",
+      "ingredienti": ["Carne di maiale", "Sale", "Zucchero", "Conservante: nitrito di sodio"]
+    },
+    {
+      "id": "17373",
+      "nome": "BB Burger",
+      "peso": "400 g",
+      "prezzo": "€8,49",
+      "descrizione": "Burger di carne bovina surgelati, pronti per la griglia.",
+      "modalita_d_uso": "Cuocere sulla griglia o in padella per circa 10 minuti.",
+      "ingredienti": ["Carne bovina", "Sale", "Pepe"]
+    },
+    {
+      "id": "9383",
+      "nome": "Arrosto di Lonza",
+      "peso": "400 g",
+      "prezzo": "€11,99",
+      "descrizione": "Arrosto di lonza di maiale surgelato, pronto per la cottura.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 40 minuti.",
+      "ingredienti": ["Lonza di maiale", "Sale", "Pepe"]
+    },
+    {
+      "id": "15422",
+      "nome": "Cotolette di petto di pollo croccante EXTRA",
+      "peso": "480 g",
+      "prezzo": "€11,99",
+      "descrizione": "Cotolette di petto di pollo impanate, surgelate.",
+      "modalita_d_uso": "Cuocere in forno a 200°C per circa 20 minuti.",
+      "ingredienti": ["Petto di pollo", "Panatura", "Olio di semi"]
+    },
+    {
+      "id": "15417",
+      "nome": "Bocconcini di petto di pollo impanati",
+      "peso": "600 g",
+      "prezzo": "€9,99",
+      "descrizione": "Bocconcini di petto di pollo impanati, pronti per la cottura.",
+      "modalita_d_uso": "Cuocere in forno a 200°C per circa 15 minuti.",
+      "ingredienti": ["Petto di pollo", "Panatura", "Olio di semi"]
+    },
+    {
+      "id": "5313",
+      "nome": "Cotolette di pollo con spinaci",
+      "peso": "770 g",
+      "prezzo": "€11,50",
+      "descrizione": "Cotolette di pollo farcite con spinaci, surgelate.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 25 minuti.",
+      "ingredienti": ["Petto di pollo", "Spinaci", "Panatura", "Olio di semi"]
+    },
+    {
+      "id": "17372",
+      "nome": "Burger di pollo",
+      "peso": "600 g",
+      "prezzo": "€10,50",
+      "descrizione": "Burger di carne di pollo surgelati, pronti per la griglia.",
+      "modalita_d_uso": "Cuocere sulla griglia o in padella per circa 10 minuti.",
+      "ingredienti": ["Carne di pollo", "Sale", "Pepe"]
+    },
+    {
+      "id": "15396",
+      "nome": "Striscioline di pollo croccanti",
+      "peso": "700 g",
+      "prezzo": "€14,50",
+      "descrizione": "Striscioline di pollo impanate, pronte per la cottura.",
+      "modalita_d_uso": "Cuocere in forno a 200°C per circa 20 minuti.",
+      "ingredienti": ["Petto di pollo", "Panatura", "Olio di semi"]
+    },
+    {
+      "id": "15448",
+      "nome": "Mini cotolette di pollo alla Milanese",
+      "peso": "500 g",
+      "prezzo": "€10,99",
+      "descrizione": "Mini cotolette di pollo impanate, surgelate.",
+      "modalita_d_uso": "Cuocere in forno a 200°C per circa 15 minuti.",
+      "ingredienti": ["Petto di pollo", "Panatura", "Olio di semi"]
+    },
+    {
+      "id": "5382",
+      "nome": "Chicken Wings",
+      "peso": "750 g",
+      "prezzo": "€11,30",
+      "descrizione": "Ali di pollo surgelate, pronte per la cottura.",
+      "modalita_d_uso": "Cuocere in forno a 200°C per circa 25 minuti.",
+      "ingredienti": ["Ali di pollo", "Sale", "Pepe"]
+    },
+    {
+      "id": "5308",
+      "nome": "Cordon bleu di pollo impanati",
+      "peso": "700 g",
+      "prezzo": "€15,99",
+      "descrizione": "Cordon bleu di pollo farciti con prosciutto e formaggio, impanati.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 25 minuti.",
+      "ingredienti": ["Petto di pollo", "Prosciutto cotto", "Formaggio", "Panatura", "Olio di semi"]
+    },
+    {
+      "id": "17356",
+      "nome": "Ribs 'Saint Louis' Style",
+      "peso": "450 g",
+      "prezzo": "€15,49",
+      "descrizione": "Costine di maiale in stile Saint Louis, surgelate.",
+      "modalita_d_uso": "Cuocere in forno a 180°C per circa 30 minuti.",
+      "ingredienti": ["Costine di maiale", "Marinatura", "Spezie"]
+    },
+    {
+      "id": "5355",
+      "nome": "Fettine di petto di pollo",
+      "peso": "500 g",
+      "prezzo": "€7,99",
+      "descrizione": "Fettine di petto di pollo italiano, pronte per la cottura.",
+      "modalita_d_uso": "Cuocere in padella con un filo d'olio per circa 7 minuti.",
+      "ingredienti": ["Petto di pollo"]
+    }
+  ]
+}

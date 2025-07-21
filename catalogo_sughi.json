@@ -1,0 +1,58 @@
+{
+  "sughi_pronti": [
+    {
+      "id": "5152",
+      "nome": "Pesto alla Genovese",
+      "peso": "200 g",
+      "prezzo": "€6,99",
+      "descrizione": "Preparato tradizionale ligure a base di basilico, pinoli, aglio, parmigiano e olio d'oliva.",
+      "modalita_d_uso": "Scongelare e mescolare con la pasta calda.",
+      "ingredienti": ["Basilico", "Pinoli", "Aglio", "Parmigiano", "Olio d'oliva"]
+    },
+    {
+      "id": "5160",
+      "nome": "Ragù alla Bolognese",
+      "peso": "400 g",
+      "prezzo": "€8,99",
+      "descrizione": "Ragù di carne bovina con soffritto e vino bianco, secondo la tradizione emiliana.",
+      "modalita_d_uso": "Riscaldare e condire la pasta.",
+      "ingredienti": ["Carne bovina", "Soffritto", "Vino bianco"]
+    },
+    {
+      "id": "5155",
+      "nome": "Sugo di Anatra",
+      "peso": "200 g",
+      "prezzo": "€7,50",
+      "descrizione": "Condimento ricco e saporito a base di carne d'anatra, ideale per gnocchi e pasta all'uovo.",
+      "modalita_d_uso": "Riscaldare e condire la pasta.",
+      "ingredienti": ["Carne d'anatra", "Soffritto", "Spezie"]
+    },
+    {
+      "id": "15154",
+      "nome": "Sugo alla Norma",
+      "peso": "400 g",
+      "prezzo": "€6,50",
+      "descrizione": "Sugo siciliano con pomodoro, melanzane grigliate e ricotta salata, arricchito con olio extravergine d'oliva.",
+      "modalita_d_uso": "Riscaldare e condire la pasta.",
+      "ingredienti": ["Pomodoro", "Melanzane", "Ricotta salata", "Olio extravergine d'oliva"]
+    },
+    {
+      "id": "15160",
+      "nome": "Salsa ai Funghi",
+      "peso": "400 g",
+      "prezzo": "€6,99",
+      "descrizione": "Salsa cremosa a base di funghi porcini, ideale per condire pasta o risotti.",
+      "modalita_d_uso": "Riscaldare e condire la pasta o il risotto.",
+      "ingredienti": ["Funghi porcini", "Panna", "Spezie"]
+    },
+    {
+      "id": "9095",
+      "nome": "Sugo Casereccio al Pomodoro",
+      "peso": "750 g",
+      "prezzo": "€6,50",
+      "descrizione": "Sugo semplice e genuino con pomodoro 100% italiano, soffritto e basilico.",
+      "modalita_d_uso": "Riscaldare e condire la pasta.",
+      "ingredienti": ["Pomodoro", "Soffritto", "Basilico"]
+    }
+  ]
+}

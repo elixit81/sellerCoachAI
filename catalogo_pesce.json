@@ -1,0 +1,94 @@
+{
+  "pesce": [
+    {
+      "id": "5486",
+      "nome": "Filetti di Merluzzo d'Alaska",
+      "peso": "700 g",
+      "prezzo": "€14,99",
+      "descrizione": "Morbidi filetti di merluzzo d'Alaska al naturale, provenienti dai mari del Pacifico del Nord.",
+      "modalita_d_uso": "Ideali per essere cucinati al forno, in padella o alla griglia.",
+      "ingredienti": ["Merluzzo d'Alaska"]
+    },
+    {
+      "id": "17492",
+      "nome": "Vongole Sgusciate",
+      "peso": "275 g",
+      "prezzo": "€4,99",
+      "descrizione": "Vongole sgusciate surgelate, pronte per essere utilizzate in risotti, paste o zuppe.",
+      "modalita_d_uso": "Scongelare e aggiungere direttamente alla preparazione desiderata.",
+      "ingredienti": ["Vongole"]
+    },
+    {
+      "id": "17479",
+      "nome": "Filetti di Salmone con Pelle",
+      "peso": "240 g",
+      "prezzo": "€10,99",
+      "descrizione": "Filetti di salmone fresco con pelle, ideali per essere cucinati al forno o alla griglia.",
+      "modalita_d_uso": "Cuocere al forno o alla griglia fino a completa cottura.",
+      "ingredienti": ["Salmone"]
+    },
+    {
+      "id": "5504",
+      "nome": "Fritto Misto alla Romana",
+      "peso": "500 g",
+      "prezzo": "€13,99",
+      "descrizione": "Misto di pesce impanato e pronto per essere fritto, secondo la tradizione romana.",
+      "modalita_d_uso": "Friggere in olio caldo fino a doratura.",
+      "ingredienti": ["Pesce assortito", "Farina", "Olio per frittura"]
+    },
+    {
+      "id": "5508",
+      "nome": "Cacciucco",
+      "peso": "750 g",
+      "prezzo": "€15,70",
+      "descrizione": "Zuppa di pesce alla livornese, ricca di frutti di mare e pesce assortito.",
+      "modalita_d_uso": "Riscaldare in pentola e servire caldo.",
+      "ingredienti": ["Pesce assortito", "Pomodoro", "Aglio", "Peperoncino"]
+    },
+    {
+      "id": "17455",
+      "nome": "Preparato di Mare per Risotti e Spaghetti",
+      "peso": "400 g",
+      "prezzo": "€9,99",
+      "descrizione": "Mix di frutti di mare surgelati, ideale per risotti e spaghetti.",
+      "modalita_d_uso": "Scongelare e aggiungere alla preparazione del risotto o degli spaghetti.",
+      "ingredienti": ["Cozze", "Vongole", "Gamberetti"]
+    },
+    {
+      "id": "5557",
+      "nome": "Filetti alla Mugnaia",
+      "peso": "700 g",
+      "prezzo": "€21,99",
+      "descrizione": "Filetti di pesce impanati alla mugnaia, pronti per essere cucinati.",
+      "modalita_d_uso": "Cuocere in padella con un filo d'olio fino a doratura.",
+      "ingredienti": ["Filetti di pesce", "Farina", "Olio d'oliva"]
+    },
+    {
+      "id": "5594",
+      "nome": "Arrosticini di Totano",
+      "peso": "450 g",
+      "prezzo": "€13,99",
+      "descrizione": "Spiedini di totano marinati, pronti per essere grigliati.",
+      "modalita_d_uso": "Grigliare fino a completa cottura.",
+      "ingredienti": ["Totano", "Spezie", "Olio d'oliva"]
+    },
+    {
+      "id": "15597",
+      "nome": "Filetti di Branzino",
+      "peso": "407 g",
+      "prezzo": "€19,99",
+      "descrizione": "Filetti di branzino freschi, ideali per essere cucinati al forno o alla griglia.",
+      "modalita_d_uso": "Cuocere al forno o alla griglia fino a completa cottura.",
+      "ingredienti": ["Branzino"]
+    },
+    {
+      "id": "17503",
+      "nome": "Capricci di Merluzzo Sudafricano con Verdure",
+      "peso": "350 g",
+      "prezzo": "€6,99",
+      "descrizione": "Filetti di merluzzo sudafricano accompagnati da verdure miste.",
+      "modalita_d_uso": "Cuocere in padella con un filo d'olio fino a doratura.",
+      "ingredienti": ["Merluzzo sudafricano", "Verdure assortite"]
+    }
+  ]
+}

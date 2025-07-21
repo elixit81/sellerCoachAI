@@ -1,0 +1,112 @@
+{
+  "verdure_e_contorni": [
+    {
+      "id": "15793",
+      "nome": "Giardiniera di Verdure",
+      "peso": "600 g",
+      "prezzo": "€6,99",
+      "descrizione": "Un mix di verdure surgelate di alta qualità, ideale per accompagnare i tuoi piatti.",
+      "modalita_d_uso": "Cuocere in pentola o microonde secondo le indicazioni riportate sulla confezione.",
+      "ingredienti": ["Verdure assortite"]
+    },
+    {
+      "id": "8772",
+      "nome": "Anelli di Cipolla",
+      "peso": "300 g",
+      "prezzo": "€5,20",
+      "descrizione": "Anelli di cipolla pastellati e surgelati, pronti per essere fritti o cotti al forno.",
+      "modalita_d_uso": "Friggere in olio caldo o cuocere in forno seguendo le istruzioni sulla confezione.",
+      "ingredienti": ["Cipolla", "Pastella"]
+    },
+    {
+      "id": "15725",
+      "nome": "Spadellata di Verdure Grigliate",
+      "peso": "600 g",
+      "prezzo": "€6,80",
+      "descrizione": "Un mix di zucchine, melanzane e peperoni grigliati, pronti per essere serviti.",
+      "modalita_d_uso": "Cuocere in padella o al forno secondo le indicazioni riportate sulla confezione.",
+      "ingredienti": ["Zucchine", "Melanzane", "Peperoni"]
+    },
+    {
+      "id": "15716",
+      "nome": "Spicchi di Cuore di Carciofo",
+      "peso": "200 g",
+      "prezzo": "€3,50",
+      "descrizione": "Cuori di carciofo tagliati a spicchi, ideali per contorni o piatti unici.",
+      "modalita_d_uso": "Cuocere in padella, pentola o microonde seguendo le istruzioni sulla confezione.",
+      "ingredienti": ["Cuore di carciofo"]
+    },
+    {
+      "id": "15704",
+      "nome": "Spinaci",
+      "peso": "450 g",
+      "prezzo": "€3,50",
+      "descrizione": "Spinaci surgelati, pronti per essere cucinati come contorno o ingrediente.",
+      "modalita_d_uso": "Cuocere in pentola o microonde secondo le indicazioni riportate sulla confezione.",
+      "ingredienti": ["Spinaci"]
+    },
+    {
+      "id": "15726",
+      "nome": "Fagiolini Finissimi",
+      "peso": "400 g",
+      "prezzo": "€3,50",
+      "descrizione": "Fagiolini sottili e teneri, ideali per contorni o insalate.",
+      "modalita_d_uso": "Cuocere in pentola o microonde seguendo le istruzioni sulla confezione.",
+      "ingredienti": ["Fagiolini"]
+    },
+    {
+      "id": "15701",
+      "nome": "Piselli Fini Novelli",
+      "peso": "450 g",
+      "prezzo": "€3,50",
+      "descrizione": "Piselli teneri e dolci, pronti per essere cucinati come contorno o ingrediente.",
+      "modalita_d_uso": "Cuocere in pentola o microonde secondo le indicazioni riportate sulla confezione.",
+      "ingredienti": ["Piselli"]
+    },
+    {
+      "id": "15669",
+      "nome": "Pronto Purè",
+      "peso": "400 g",
+      "prezzo": "€3,50",
+      "descrizione": "Purè di patate pronto da riscaldare, ideale come contorno veloce.",
+      "modalita_d_uso": "Riscaldare in pentola o microonde seguendo le istruzioni sulla confezione.",
+      "ingredienti": ["Purè di patate"]
+    },
+    {
+      "id": "15757",
+      "nome": "Carote a Rondelle 100% 'Carota dell'Altopiano del Fucino IGP'",
+      "peso": "450 g",
+      "prezzo": "€3,50",
+      "descrizione": "Carote di alta qualità, tagliate a rondelle, provenienti dall'Altopiano del Fucino.",
+      "modalita_d_uso": "Cuocere in pentola o microonde secondo le indicazioni riportate sulla confezione.",
+      "ingredienti": ["Carote"]
+    },
+    {
+      "id": "5778",
+      "nome": "Delizie dell'Orto Pastellate",
+      "peso": "600 g",
+      "prezzo": "€6,69",
+      "descrizione": "Verdure assortite pastellate e surgelate, pronte per essere fritte o cotte al forno.",
+      "modalita_d'uso": "Friggere in olio caldo o cuocere in forno seguendo le istruzioni sulla confezione.",
+      "ingredienti": ["Verdure assortite", "Pastella"]
+    },
+    {
+      "id": "15742",
+      "nome": "Asparagi Verdi",
+      "peso": "300 g",
+      "prezzo": "€6,70",
+      "descrizione": "Asparagi verdi di alta qualità, pronti per essere cucinati come contorno o ingrediente.",
+      "modalita_d'uso": "Cuocere in pentola o microonde secondo le indicazioni riportate sulla confezione.",
+      "ingredienti": ["Asparagi"]
+    },
+    {
+      "id": "5736",
+      "nome": "Broccoli",
+      "peso": "750 g",
+      "prezzo": "€6,70",
+      "descrizione": "Broccoli freschi surgelati, ideali per contorni o piatti unici.",
+      "modalita_d'uso": "Cuocere in pentola o microonde seguendo le istruzioni sulla confezione.",
+      "ingredienti": ["Broccoli"]
+    }
+  ]
+}

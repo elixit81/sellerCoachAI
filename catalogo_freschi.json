@@ -1,0 +1,130 @@
+{
+  "i_freschi": [
+    {
+      "id": "7377",
+      "nome": "Frico Furlan",
+      "peso": "180 g",
+      "prezzo": "€6,99",
+      "descrizione": "Formaggio friulano a base di latte vaccino, dal gusto intenso e aromatico.",
+      "modalita_d_uso": "Ideale da gustare da solo, con pane o come ingrediente per piatti caldi.",
+      "ingredienti": ["Latte vaccino", "Sale", "Cagliata", "Fermenti lattici"]
+    },
+    {
+      "id": "7375",
+      "nome": "Pesto Rosso",
+      "peso": "130 g",
+      "prezzo": "€4,99",
+      "descrizione": "Salsa a base di pomodori secchi, mandorle e basilico, dal sapore ricco e aromatico.",
+      "modalita_d_uso": "Perfetto per condire pasta, bruschette o come accompagnamento per formaggi.",
+      "ingredienti": ["Pomodori secchi", "Mandorle", "Basilico", "Olio d'oliva", "Aglio", "Sale"]
+    },
+    {
+      "id": "7369",
+      "nome": "Yogurt della Valtellina Mango",
+      "peso": "150 g",
+      "prezzo": "€1,99",
+      "descrizione": "Yogurt cremoso con polpa di mango, prodotto con latte di alta qualità.",
+      "modalita_d_uso": "Ideale come colazione o spuntino sano e gustoso.",
+      "ingredienti": ["Latte", "Polpa di mango", "Zucchero", "Fermenti lattici"]
+    },
+    {
+      "id": "7299",
+      "nome": "Scamorzine Affumicate",
+      "peso": "120 g",
+      "prezzo": "€3,99",
+      "descrizione": "Formaggio a pasta filata dal gusto affumicato, tipico della tradizione italiana.",
+      "modalita_d_uso": "Ottime da gustare da sole, in panini o come ingrediente per piatti caldi.",
+      "ingredienti": ["Latte", "Sale", "Cagliata", "Fermenti lattici", "Affumicatura naturale"]
+    },
+    {
+      "id": "7018",
+      "nome": "Mozzarella di Bufala Campana DOP senza lattosio",
+      "peso": "125 g",
+      "prezzo": "€3,90",
+      "descrizione": "Mozzarella di bufala campana DOP, priva di lattosio, dal gusto delicato e cremoso.",
+      "modalita_d_uso": "Perfetta per insalate, pizze o da gustare con pomodori e basilico.",
+      "ingredienti": ["Latte di bufala", "Sale", "Cagliata", "Fermenti lattici"]
+    },
+    {
+      "id": "7295",
+      "nome": "Yogurt Greco Mirtillo",
+      "peso": "170 g",
+      "prezzo": "€1,99",
+      "descrizione": "Yogurt greco cremoso con mirtilli, ricco di proteine e dal gusto intenso.",
+      "modalita_d_uso": "Ideale come colazione o spuntino sano e gustoso.",
+      "ingredienti": ["Latte", "Mirtilli", "Zucchero", "Fermenti lattici"]
+    },
+    {
+      "id": "7126",
+      "nome": "Yogurt della Valtellina Caffè",
+      "peso": "150 g",
+      "prezzo": "€1,99",
+      "descrizione": "Yogurt cremoso con aroma di caffè, prodotto con latte di alta qualità.",
+      "modalita_d_uso": "Ideale come colazione o spuntino per gli amanti del caffè.",
+      "ingredienti": ["Latte", "Aroma di caffè", "Zucchero", "Fermenti lattici"]
+    },
+    {
+      "id": "7080",
+      "nome": "Yogurt della Valtellina Fragola",
+      "peso": "150 g",
+      "prezzo": "€1,99",
+      "descrizione": "Yogurt cremoso con polpa di fragola, prodotto con latte di alta qualità.",
+      "modalita_d_uso": "Ideale come colazione o spuntino sano e gustoso.",
+      "ingredienti": ["Latte", "Polpa di fragola", "Zucchero", "Fermenti lattici"]
+    },
+    {
+      "id": "7001",
+      "nome": "Mozzarella di Bufala Campana DOP",
+      "peso": "250 g",
+      "prezzo": "€5,99",
+      "descrizione": "Mozzarella di bufala campana DOP, dal gusto delicato e cremoso.",
+      "modalita_d_uso": "Perfetta per insalate, pizze o da gustare con pomodori e basilico.",
+      "ingredienti": ["Latte di bufala", "Sale", "Cagliata", "Fermenti lattici"]
+    },
+    {
+      "id": "7078",
+      "nome": "Yogurt della Valtellina Mirtillo",
+      "peso": "150 g",
+      "prezzo": "€1,99",
+      "descrizione": "Yogurt cremoso con polpa di mirtillo, prodotto con latte di alta qualità.",
+      "modalita_d_uso": "Ideale come colazione o spuntino sano e gustoso.",
+      "ingredienti": ["Latte", "Polpa di mirtillo", "Zucchero", "Fermenti lattici"]
+    },
+    {
+      "id": "7077",
+      "nome": "Yogurt della Valtellina Albicocca",
+      "peso": "150 g",
+      "prezzo": "€1,99",
+      "descrizione": "Yogurt cremoso con polpa di albicocca, prodotto con latte di alta qualità.",
+      "modalita_d_uso": "Ideale come colazione o spuntino sano e gustoso.",
+      "ingredienti": ["Latte", "Polpa di albicocca", "Zucchero", "Fermenti lattici"]
+    },
+    {
+      "id": "7003",
+      "nome": "Burrata di Bufala",
+      "peso": "125 g",
+      "prezzo": "€3,99",
+      "descrizione": "Burrata di bufala, dal cuore morbido e cremoso, tipica della tradizione pugliese.",
+      "modalita_d_uso": "Perfetta per insalate, pizze o da gustare con pomodori e basilico.",
+      "ingredienti": ["Latte di bufala", "Panna", "Sale", "Cagliata", "Fermenti lattici"]
+    },
+    {
+      "id": "7293",
+      "nome": "Yogurt Greco Bianco",
+      "peso": "170 g",
+      "prezzo": "€1,99",
+      "descrizione": "Yogurt greco naturale, ricco di proteine e dal gusto intenso.",
+      "modalita_d_uso": "Ideale come base per dolci, colazione o spuntino.",
+      "ingredienti": ["Latte", "Zucchero", "Fermenti lattici"]
+    },
+    {
+      "id": "7277",
+      "nome": "Yogurt della Valtellina Banana",
+      "peso": "150 g",
+      "prezzo": "€1,99",
+      "descrizione": "Yogurt cremoso con polpa di banana, prodotto con latte di alta qualità.",
+      "modalita_d_uso": "Ideale come colazione o spuntino sano e gustoso.",
+      "ingredienti": ["Latte", "Polpa di banana", "Zucchero", "Fermenti lattici"]
+    }
+  ]
+}
