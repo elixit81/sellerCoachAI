@@ -66,7 +66,7 @@ Seleziona 3 combinazioni adatte per un pasto (pranzo o cena) equilibrato, gustos
 Ogni combo deve contenere almeno:
 - un alimento principale (carne o pesce)
 - un contorno (verdure o patate)
-- un completamento (sugo o fresco)
+- un completamento (fresco)
 Ecco i prodotti disponibili:
 ${JSON.stringify(prodotti)}
 `;
