@@ -130,38 +130,48 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTodos();
 });
 
-// 🔹 Funzione per suggerire combo da pranzo/cena analizzando i cataloghi
+//
+//🔹 Funzione per suggerire combo da pranzo/cena analizzando i cataloghi
+//
+
 async function suggerisciCombo() {
   const el = document.getElementById("combo-output");
   el.innerText = "Analisi combo in corso...";
 
   try {
-    const cataloghi = [
-      "catalogo_pesce.json",
-      "catalogo_carne.json",
-      "catalogo_verdure.json",
-      "catalogo_sughi.json",
-      "catalogo_freschi.json",
-      "catalogo_integratori.json",
-      "catalogo_patate.json"
-    ];
+    // 🔹 Leggi i filtri dal form
+    const categoria = document.getElementById("filtro-categoria")?.value;
+    const tipoProdotto = document.getElementById("filtro-tipo")?.value;
+    const senzaLattosio = document.getElementById("filtro-lattosio")?.checked;
+    const senzaGlutine = document.getElementById("filtro-glutine")?.checked;
+    const sweetlife = document.getElementById("filtro-sweetlife")?.checked;
+    const vegano = document.getElementById("filtro-vegano")?.checked;
+    const prezzoMax = parseFloat(document.getElementById("filtro-prezzo")?.value);
 
-    const dataArr = await Promise.all(
-      cataloghi.map(file =>
-        fetch(file).then(res => res.ok ? res.json() : [])
-      )
-    );
+    // 🔹 Carica il catalogo completo
+    const response = await fetch("catalogo_completo_prova.json");
+    const prodotti = await response.json();
 
-    const prodotti = dataArr.flat();
+    // 🔹 Filtra i prodotti in base ai filtri selezionati
+    const prodottiFiltrati = prodotti.filter(p => {
+      if (categoria && p.categoria !== categoria) return false;
+      if (tipoProdotto && p.tipo !== tipoProdotto) return false;
+      if (senzaLattosio && p.senza_lattosio !== true) return false;
+      if (senzaGlutine && p.senza_glutine !== true) return false;
+      if (sweetlife && p.sweetlife !== true) return false;
+      if (vegano && p.vegano !== true) return false;
+      if (!isNaN(prezzoMax)) {
+        const prezzo = parseFloat(p.prezzo?.replace("€", "").replace(",", "."));
+        if (isNaN(prezzo) || prezzo > prezzoMax) return false;
+      }
+      return true;
+    });
 
+    // 🔹 Costruisci il prompt AI
     const prompt = `
-Seleziona 3 combinazioni adatte per un pasto (pranzo o cena) equilibrato, gustoso e con prodotti surgelati.
-Ogni combo deve contenere almeno:
-- un alimento principale (carne o pesce)
-- un contorno (verdure o patate)
-- un completamento (fresco)
-Ecco i prodotti disponibili:
-${JSON.stringify(prodotti)}
+Suggerisci 2 combo adatte per un pasto (pranzo o cena) in base ai seguenti filtri:
+Prodotti filtrati:
+${JSON.stringify(prodottiFiltrati, null, 2)}
 `;
 
     const res = await fetch("/api/coach-ai", {
@@ -177,7 +187,9 @@ ${JSON.stringify(prodotti)}
   }
 }
 
-// 🔹 Funzione per analizzare il diario (analisi AI)
+// 
+//🔹 Funzione per analizzare il diario (analisi AI)
+//
 async function handleAnalisi(event) {
   event.preventDefault();
   const el = document.getElementById("analisi-output");
