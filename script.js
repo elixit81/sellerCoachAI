@@ -45,10 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const todoList = document.getElementById('todo-list');
   const resetBtn = document.getElementById('reset-todo');
 
-  let todos = [];
+  let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+  function saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
 
   function renderTodos() {
-    // Ordina i todos per orario crescente
+    // Ordina per orario crescente
     todos.sort((a, b) => a.orario.localeCompare(b.orario));
 
     todoList.innerHTML = '';
@@ -64,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       checkbox.checked = todo.completed;
       checkbox.addEventListener('change', () => {
         todo.completed = checkbox.checked;
+        saveTodos();
         renderTodos();
       });
 
@@ -74,7 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('todo-nome').value = todo.nome;
         document.getElementById('todo-orario').value = todo.orario;
         document.getElementById('todo-prodotti').value = todo.prodotti;
-        todos.splice(index, 1); // Rimuove l'elemento per reinserirlo modificato
+        todos.splice(index, 1);
+        saveTodos();
         renderTodos();
       });
 
@@ -108,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       todoForm.reset();
+      saveTodos();
       renderTodos();
     }
   });
@@ -115,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   resetBtn.addEventListener('click', () => {
     if (confirm('Vuoi davvero cancellare tutte le attività?')) {
       todos = [];
+      saveTodos();
       renderTodos();
     }
   });
