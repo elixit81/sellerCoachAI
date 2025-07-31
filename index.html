@@ -123,36 +123,58 @@
 
     <!-- Sezione Combo -->
     <section id="combo">
-      <h2>Combo</h2>
-<button id="btn-combo">Suggerisci combo</button>
+      <h2>Prodotti/Combo</h2>
+     <!-- Checkbox Menù -->
+<label><input type="checkbox" id="filtro-menu"> Menù</label>
 
-<select id="filtro-categoria">
-  <option value="">Tutte le categorie</option>
-  <option value="carne">Carne</option>
-  <option value="pesce">Pesce</option>
-  <option value="verdure">Verdure</option>
-  <option value="patate">Patate</option>
-  <option value="fresco">Fresco</option>
-  <option value="primi">Primi</option>
-  <option value="pizze-snack">Pizze e Snack</option>
-</select>
+<!-- Filtri menù (visibili solo se "Menù" è attivo) -->
+<div id="filtri-menu" style="display: none;">
+  <label><input type="checkbox" id="filtro-primo"> Primo</label>
+  <label><input type="checkbox" id="filtro-secondo"> Secondo</label>
+  <label><input type="checkbox" id="filtro-contorno"> Contorno</label>
+  <label><input type="checkbox" id="filtro-dolce"> Dolce</label>
+</div>
 
-<select id="filtro-tipo">
-  <option value="">Tutti i tipi</option>
-  <option value="al naturale">Al naturale</option>
-  <option value="impanato">Impanato</option>
-  <option value="già ricettato">Già ricettato</option>
-  <option value="fritto">Fritto</option>
-</select>
+<!-- Filtri base (visibili solo se "Menù" è disattivato) -->
+<div id="filtri-base">
+  <label for="filtro-categoria">Categoria:</label>
+  <select id="filtro-categoria">
+    <option value="">Tutte</option>
+    <option value="carne">Carne</option>
+    <option value="pesce">Pesce</option>
+    <option value="verdure">Verdure</option>
+    <option value="gelati">Gelati</option>
+    <option value="sughi">Sughi</option>
+    <option value="integratori">Integratori</option>
+    <option value="i_freschi">Freschi</option>
+    <option value="patate_e_patate">Patate</option>
+  </select>
 
-<label><input type="checkbox" id="filtro-sweetlife"> SweetLife (pochi zuccheri)</label>
-<label><input type="checkbox" id="filtro-lattosio"> Senza lattosio</label>
-<label><input type="checkbox" id="filtro-glutine"> Senza glutine</label>
-<label><input type="checkbox" id="filtro-vegano"> Vegetariano</label>
+  <label for="filtro-tipo">Tipo di prodotto:</label>
+  <select id="filtro-tipo">
+    <option value="">Tutti</option>
+    <option value="al naturale">Al naturale</option>
+    <option value="impanato">Impanato</option>
+    <option value="già ricettato">Già ricettato</option>
+    <option value="fritto">Fritto</option>
+    <option value="gratinato">Gratinato</option>
+  </select>
 
-<input type="number" id="filtro-prezzo" placeholder="Prezzo massimo €">
+  <label for="filtro-prezzo">Prezzo massimo (€):</label>
+  <input type="number" id="filtro-prezzo" min="0" placeholder="Es: 10">
+</div>
 
+<!-- Filtri sempre visibili -->
+<div id="filtri-sempre">
+  <label><input type="checkbox" id="filtro-sweetlife"> SweetLife (pochi zuccheri)</label>
+  <label><input type="checkbox" id="filtro-lattosio"> Senza lattosio</label>
+  <label><input type="checkbox" id="filtro-glutine"> Senza glutine</label>
+  <label><input type="checkbox" id="filtro-vegano"> Vegetariano / Vegano</label>
+</div>
+
+<!-- Output -->
 <p id="combo-output">Premi il pulsante per ricevere un consiglio AI!</p>
+    <p id="combo-output">Premi il pulsante per ricevere un consiglio AI!</p>
 
     </section>
   </main>
