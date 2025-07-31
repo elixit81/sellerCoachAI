@@ -1,0 +1,92 @@
+[
+  {
+    "id": "7357",
+    "nome": "Fermenti Lattici",
+    "peso": "45 g",
+    "prezzo": "€17,99",
+    "descrizione": "Integratore alimentare con fermenti lattici vivi utile per l’equilibrio della flora intestinale.",
+    "modalita_d_uso": "1 capsula al giorno con un bicchiere d’acqua",
+    "ingredienti": ["Fermenti lattici (Lactobacillus acidophilus, Bifidobacterium)", "FOS", "capsula vegetale"],
+    "categoria": "integratori"
+  },
+  {
+    "id": "7358",
+    "nome": "Digestivo Forte",
+    "peso": "30 g",
+    "prezzo": "€15,99",
+    "descrizione": "Integratore a base di enzimi digestivi e piante amare.",
+    "modalita_d_uso": "1 compressa prima dei pasti",
+    "ingredienti": ["Enzimi digestivi", "Zenzero", "Carciofo", "capsula vegetale"],
+    "categoria": "integratori"
+  },
+  {
+    "id": "17370",
+    "nome": "Bacon",
+    "peso": "230 g",
+    "prezzo": "€8,99",
+    "descrizione": "Fette di bacon surgelato, pronte per essere cotte.",
+    "modalita_d_uso": "Cuocere in padella o al forno fino a doratura.",
+    "ingredienti": ["Carne di maiale", "Sale", "Conservanti"],
+    "categoria": "carne"
+  },
+  {
+    "id": "18232",
+    "nome": "Filetti di Platessa",
+    "peso": "450 g",
+    "prezzo": "€12,99",
+    "descrizione": "Filetti di platessa surgelati senza spine.",
+    "modalita_d_uso": "Cuocere in padella o al forno.",
+    "ingredienti": ["Filetti di platessa"],
+    "categoria": "pesce"
+  },
+  {
+    "id": "12045",
+    "nome": "Fagiolini fini",
+    "peso": "750 g",
+    "prezzo": "€4,79",
+    "descrizione": "Fagiolini verdi fini, surgelati subito dopo la raccolta.",
+    "modalita_d_uso": "Lessare o cuocere al vapore.",
+    "ingredienti": ["Fagiolini"],
+    "categoria": "verdure"
+  },
+  {
+    "id": "54003",
+    "nome": "Gnocchi di patate",
+    "peso": "1000 g",
+    "prezzo": "€3,99",
+    "descrizione": "Gnocchi a base di patate, surgelati, pronti in 2 minuti.",
+    "modalita_d_uso": "Cuocere in acqua bollente finché non salgono a galla.",
+    "ingredienti": ["Patate", "Farina", "Sale"],
+    "categoria": "patate_e_patate"
+  },
+  {
+    "id": "83001",
+    "nome": "Ragù alla bolognese",
+    "peso": "300 g",
+    "prezzo": "€5,99",
+    "descrizione": "Sughi surgelati a base di carne di manzo e pomodoro.",
+    "modalita_d_uso": "Riscaldare in padella o microonde.",
+    "ingredienti": ["Carne di manzo", "Pomodoro", "Cipolla", "Olio", "Sale"],
+    "categoria": "sughi"
+  },
+  {
+    "id": "67004",
+    "nome": "Gelato alla Vaniglia Bourbon",
+    "peso": "500 g",
+    "prezzo": "€6,49",
+    "descrizione": "Gelato cremoso alla vaniglia con vera Vaniglia Bourbon del Madagascar.",
+    "modalita_d_uso": "Lasciare riposare 5 minuti a temperatura ambiente prima di servire.",
+    "ingredienti": ["Latte scremato", "Zucchero", "Panna", "Vaniglia", "Stabilizzanti"],
+    "categoria": "gelati"
+  },
+  {
+    "id": "91022",
+    "nome": "Mozzarella senza lattosio",
+    "peso": "200 g",
+    "prezzo": "€3,49",
+    "descrizione": "Mozzarella fresca senza lattosio, perfetta per intolleranti.",
+    "modalita_d_uso": "Consumare a crudo o su pizza.",
+    "ingredienti": ["Latte vaccino delattosato", "Caglio", "Sale"],
+    "categoria": "i_freschi"
+  }
+]
