@@ -130,9 +130,22 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTodos();
 });
 
-//
+// Script per mostrare/nascondere i blocchi 
+<script>
+  const filtroMenu = document.getElementById('filtro-menu');
+  const filtriMenu = document.getElementById('filtri-menu');
+  const filtriBase = document.getElementById('filtri-base');
+
+  filtroMenu.addEventListener('change', () => {
+    const isChecked = filtroMenu.checked;
+    filtriMenu.style.display = isChecked ? 'block' : 'none';
+    filtriBase.style.display = isChecked ? 'none' : 'block';
+  });
+</script>
+
+//========================================================================
 //🔹 Funzione per suggerire combo da pranzo/cena analizzando i cataloghi
-//
+//========================================================================
 
 async function suggerisciCombo() {
   const el = document.getElementById("combo-output");
