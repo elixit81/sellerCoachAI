@@ -124,8 +124,36 @@
     <!-- Sezione Combo -->
     <section id="combo">
       <h2>Combo</h2>
-      <button id="btn-combo">Suggerisci combo</button>
-      <p id="combo-output">Premi il pulsante per ricevere un consiglio AI!</p>
+<button id="btn-combo">Suggerisci combo</button>
+
+<select id="filtro-categoria">
+  <option value="">Tutte le categorie</option>
+  <option value="carne">Carne</option>
+  <option value="pesce">Pesce</option>
+  <option value="verdure">Verdure</option>
+  <option value="patate">Patate</option>
+  <option value="fresco">Fresco</option>
+  <option value="primi">Primi</option>
+  <option value="pizze-snack">Pizze e Snack</option>
+</select>
+
+<select id="filtro-tipo">
+  <option value="">Tutti i tipi</option>
+  <option value="al naturale">Al naturale</option>
+  <option value="impanato">Impanato</option>
+  <option value="già ricettato">Già ricettato</option>
+  <option value="fritto">Fritto</option>
+</select>
+
+<label><input type="checkbox" id="filtro-sweetlife"> SweetLife (pochi zuccheri)</label>
+<label><input type="checkbox" id="filtro-lattosio"> Senza lattosio</label>
+<label><input type="checkbox" id="filtro-glutine"> Senza glutine</label>
+<label><input type="checkbox" id="filtro-vegano"> Vegetariano</label>
+
+<input type="number" id="filtro-prezzo" placeholder="Prezzo massimo €">
+
+<p id="combo-output">Premi il pulsante per ricevere un consiglio AI!</p>
+
     </section>
   </main>
 
