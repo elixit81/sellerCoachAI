@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Navigazione tra sezioni
-  document.querySelectorAll("nav button").forEach(btn => {
+  document.querySelectorAll("nav button").forEach((btn) => {
     btn.addEventListener("click", () => {
       const target = btn.getAttribute("data-target");
-      document.querySelectorAll("main section").forEach(sec => {
+      document.querySelectorAll("main section").forEach((sec) => {
         sec.classList.toggle("active", sec.id === target);
       });
     });
@@ -130,75 +130,73 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTodos();
 });
 
-// Script per mostrare/nascondere i blocchi 
-<script>
-  const filtroMenu = document.getElementById('filtro-menu');
-  const filtriMenu = document.getElementById('filtri-menu');
-  const filtriBase = document.getElementById('filtri-base');
+  // Toggle menu filtri nella sezione combo
+  const menuCheckbox = document.getElementById("menu-checkbox");
+  const filtriMenu = document.getElementById("filtri-menu");
+  const filtriBase = document.getElementById("filtri-base");
 
-  filtroMenu.addEventListener('change', () => {
-    const isChecked = filtroMenu.checked;
-    filtriMenu.style.display = isChecked ? 'block' : 'none';
-    filtriBase.style.display = isChecked ? 'none' : 'block';
+  menuCheckbox.addEventListener("change", () => {
+    filtriMenu.style.display = menuCheckbox.checked ? "block" : "none";
+    filtriBase.style.display = menuCheckbox.checked ? "none" : "block";
   });
-</script>
 
-//========================================================================
-//🔹 Funzione per suggerire combo da pranzo/cena analizzando i cataloghi
-//========================================================================
+  // Gestione filtro e richiesta combo AI
+  document.getElementById("btn-combo").addEventListener("click", async () => {
+    const isMenu = menuCheckbox.checked;
 
-async function suggerisciCombo() {
-  const el = document.getElementById("combo-output");
-  el.innerText = "Analisi combo in corso...";
+    const filtri = {
+      menu: isMenu,
+      primo: isMenu && document.getElementById("filtro-primo").checked,
+      secondo: isMenu && document.getElementById("filtro-secondo").checked,
+      contorno: isMenu && document.getElementById("filtro-contorno").checked,
+      dolce: isMenu && document.getElementById("filtro-dolce").checked,
+      sweetlife: document.getElementById("filtro-sweetlife").checked,
+      senzaLattosio: document.getElementById("filtro-senza-lattosio").checked,
+      senzaGlutine: document.getElementById("filtro-senza-glutine").checked,
+      vegetariano: document.getElementById("filtro-vegetariano").checked,
+      categoria: !isMenu ? document.getElementById("filtro-categoria").value : null,
+      tipo: !isMenu ? document.getElementById("filtro-tipo").value : null,
+      prezzo: !isMenu ? document.getElementById("filtro-prezzo").value : null
+    };
 
-  try {
-    // 🔹 Leggi i filtri dal form
-    const categoria = document.getElementById("filtro-categoria")?.value;
-    const tipoProdotto = document.getElementById("filtro-tipo")?.value;
-    const senzaLattosio = document.getElementById("filtro-lattosio")?.checked;
-    const senzaGlutine = document.getElementById("filtro-glutine")?.checked;
-    const sweetlife = document.getElementById("filtro-sweetlife")?.checked;
-    const vegano = document.getElementById("filtro-vegano")?.checked;
-    const prezzoMax = parseFloat(document.getElementById("filtro-prezzo")?.value);
+    const prompt = generaPromptCombo(filtri);
 
-    // 🔹 Carica il catalogo completo
-    const response = await fetch("catalogo_completo_prova.json");
-    const prodotti = await response.json();
+    try {
+      const risposta = await fetch("/api/coach-ai", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ domanda: prompt })
+      });
 
-    // 🔹 Filtra i prodotti in base ai filtri selezionati
-    const prodottiFiltrati = prodotti.filter(p => {
-      if (categoria && p.categoria !== categoria) return false;
-      if (tipoProdotto && p.tipo !== tipoProdotto) return false;
-      if (senzaLattosio && p.senza_lattosio !== true) return false;
-      if (senzaGlutine && p.senza_glutine !== true) return false;
-      if (sweetlife && p.sweetlife !== true) return false;
-      if (vegano && p.vegano !== true) return false;
-      if (!isNaN(prezzoMax)) {
-        const prezzo = parseFloat(p.prezzo?.replace("€", "").replace(",", "."));
-        if (isNaN(prezzo) || prezzo > prezzoMax) return false;
-      }
-      return true;
-    });
+      const dati = await risposta.json();
+      document.getElementById("risultato-combo").innerText = dati.risposta || "Nessuna risposta.";
+    } catch (err) {
+      document.getElementById("risultato-combo").innerText = "Errore: " + err.message;
+    }
+  });
 
-    // 🔹 Costruisci il prompt AI
-    const prompt = `
-Suggerisci 2 combo adatte per un pasto (pranzo o cena) in base ai seguenti filtri:
-Prodotti filtrati:
-${JSON.stringify(prodottiFiltrati, null, 2)}
-`;
+  // Funzione per generare prompt AI in base ai filtri selezionati
+  function generaPromptCombo(filtri) {
+    const preferenze = [];
+    if (filtri.sweetlife) preferenze.push("Sweetlife");
+    if (filtri.senzaLattosio) preferenze.push("senza lattosio");
+    if (filtri.senzaGlutine) preferenze.push("senza glutine");
+    if (filtri.vegetariano) preferenze.push("vegetariano");
 
-    const res = await fetch("/api/coach-ai", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ type: "combo", prompt })
-    });
+    if (filtri.menu) {
+      const portate = [];
+      if (filtri.primo) portate.push("primo piatto");
+      if (filtri.secondo) portate.push("secondo piatto");
+      if (filtri.contorno) portate.push("contorno");
+      if (filtri.dolce) portate.push("dolce");
 
-    const data = await res.json();
-    el.innerText = data.result || "Nessuna risposta.";
-  } catch (e) {
-    el.innerText = "Errore combo: " + e.message;
+      return `Suggerisci una combo di prodotti Bofrost composta da: ${portate.join(", ")}.${preferenze.length > 0 ? " Considera anche se possibile le preferenze: " + preferenze.join(", ") + "." : ""}`;
+    } else {
+      return `Suggerisci una combo di prodotti Bofrost con categoria: ${filtri.categoria}, tipo: ${filtri.tipo}, prezzo: ${filtri.prezzo}.${preferenze.length > 0 ? " Considera anche se possibile le preferenze: " + preferenze.join(", ") + "." : ""}`;
+    }
   }
-}
+});
+                          
 
 // 
 //🔹 Funzione per analizzare il diario (analisi AI)
