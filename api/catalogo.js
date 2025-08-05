@@ -1,39 +1,75 @@
-import fs from 'fs';
-import path from 'path';
+document.addEventListener("DOMContentLoaded", () => {
+  // Navigazione tra sezioni
+  document.querySelectorAll("nav button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.getAttribute("data-target");
+      document.querySelectorAll("main section").forEach((sec) => {
+        sec.classList.toggle("active", sec.id === target);
+      });
+    });
+  });
 
-export default function handler(req, res) {
-  const {
-    categoria,
-    tipoProdotto,
-    senzaLattosio,
-    senzaGlutine,
-    sweetlife,
-    vegano,
-    minPrezzo,
-    maxPrezzo,
-    page = '1',
-    pageSize = '10'
-  } = req.query;
+  // Toggle menu filtri nella sezione combo
+  const menuCheckbox = document.getElementById("menu-checkbox");
+  const filtriMenu = document.getElementById("filtri-menu");
+  const filtriBase = document.getElementById("filtri-base");
 
-  const filePath = path.join(process.cwd(), 'data', 'catalogo_completo.json');
+  menuCheckbox.addEventListener("change", () => {
+    if (menuCheckbox.checked) {
+      filtriMenu.style.display = "block";
+      filtriBase.style.display = "none";
+    } else {
+      filtriMenu.style.display = "none";
+      filtriBase.style.display = "block";
+    }
+  });
 
-  let catalogo;
-  try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    catalogo = JSON.parse(fileContents);
-  } catch (error) {
-    res.status(500).json({ error: 'Errore nel caricamento del catalogo' });
-    return;
+  // Gestione filtro e richiesta combo AI
+  document.getElementById("btn-combo").addEventListener("click", async () => {
+    const isMenu = document.getElementById("menu-checkbox").checked;
+
+    const filtri = {
+      menu: isMenu,
+      primo: isMenu && document.getElementById("filtro-primo").checked,
+      secondo: isMenu && document.getElementById("filtro-secondo").checked,
+      contorno: isMenu && document.getElementById("filtro-contorno").checked,
+      dolce: isMenu && document.getElementById("filtro-dolce").checked,
+      sweetlife: document.getElementById("filtro-sweetlife").checked,
+      senzaLattosio: document.getElementById("filtro-senza-lattosio").checked,
+      senzaGlutine: document.getElementById("filtro-senza-glutine").checked,
+      vegetariano: document.getElementById("filtro-vegetariano").checked,
+      categoria: !isMenu ? document.getElementById("filtro-categoria").value : null,
+      tipo: !isMenu ? document.getElementById("filtro-tipo").value : null,
+      prezzo: !isMenu ? document.getElementById("filtro-prezzo").value : null
+    };
+
+    const prompt = generaPromptCombo(filtri);
+
+    const risposta = await fetch("/api/coach-ai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ domanda: prompt })
+    });
+
+    const dati = await risposta.json();
+    document.getElementById("risultato-combo").innerText = dati.risposta;
+  });
+
+  // Funzione per generare prompt AI in base ai filtri selezionati
+  function generaPromptCombo(filtri) {
+    if (filtri.menu) {
+      const portate = [];
+      if (filtri.primo) portate.push("primo piatto");
+      if (filtri.secondo) portate.push("secondo piatto");
+      if (filtri.contorno) portate.push("contorno");
+      if (filtri.dolce) portate.push("dolce");
+
+      return `Suggerisci una combo di prodotti Bofrost composta da: ${portate.join(", ")}. Considera anche se possibile le preferenze: ${filtri.sweetlife ? "Sweetlife, " : ""}${filtri.senzaLattosio ? "senza lattosio, " : ""}${filtri.senzaGlutine ? "senza glutine, " : ""}${filtri.vegetariano ? "vegetariano, " : ""}`;
+    } else {
+      return `Suggerisci una combo di prodotti Bofrost con categoria: ${filtri.categoria}, tipo: ${filtri.tipo}, prezzo: ${filtri.prezzo}. Considera anche se possibile le preferenze: ${filtri.sweetlife ? "Sweetlife, " : ""}${filtri.senzaLattosio ? "senza lattosio, " : ""}${filtri.senzaGlutine ? "senza glutine, " : ""}${filtri.vegetariano ? "vegetariano, " : ""}`;
+    }
   }
-
-  function prezzoToNumber(prezzoStr) {
-    if (!prezzoStr) return NaN;
-    const numero = prezzoStr.replace('€', '').replace(',', '.').trim();
-    return parseFloat(numero);
-  }
-
-  let risultati = catalogo;
-
+});
   if (categoria) {
     risultati = risultati.filter(item => item.categoria.toLowerCase() === categoria.toLowerCase());
   }
