@@ -140,7 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
     filtriBase.style.display = menuCheckbox.checked ? "none" : "block";
   });
 
+
   // Gestione filtro e richiesta combo AI
+  document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btn-combo").addEventListener("click", async () => {
     const isMenu = menuCheckbox.checked;
 
@@ -159,16 +161,14 @@ document.addEventListener('DOMContentLoaded', () => {
       prezzo: !isMenu ? document.getElementById("filtro-prezzo").value : null
     };
 
-    
-// In script.js, per esempio nel suggerisciCombo:
-const prompt = generaPromptCombo(filtri);
+    const prompt = generaPromptCombo(filtri);
 
     try {
       const risposta = await fetch("/api/coach-ai", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ type: "combo", prompt })  // <--- qui aggiungi type e prompt
-});
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "combo", prompt })  
+      });
 
       const dati = await risposta.json();
       document.getElementById("risultato-combo").innerText = dati.risposta || "Nessuna risposta.";
@@ -197,7 +197,7 @@ const prompt = generaPromptCombo(filtri);
       return `Suggerisci una combo di prodotti Bofrost con categoria: ${filtri.categoria}, tipo: ${filtri.tipo}, prezzo: ${filtri.prezzo}.${preferenze.length > 0 ? " Considera anche se possibile le preferenze: " + preferenze.join(", ") + "." : ""}`;
     }
   }
-});
+}); 
                           
 
 // 
