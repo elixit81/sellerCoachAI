@@ -2,38 +2,93 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seller Coach AI</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coach di Vendita Bofrost</title>
   <style>
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1rem 0;
-    }
-
-    nav button {
-      padding: 0.5rem 1rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    section {
-      display: none;
-    }
-
-    section.active {
-      display: block;
-    }
-
-    #todo-list li.completed span {
-      text-decoration: line-through;
-      opacity: 0.6;
-    }
+    main section { display: none; }
+    main section.active { display: block; }
+    .filtro-group { margin-bottom: 10px; }
   </style>
 </head>
 <body>
+  <nav>
+    <button data-target="combo">Combo</button>
+    <!-- Altri pulsanti sezione -->
+  </nav>
+
+  <main>
+    <section id="combo" class="active">
+      <h2>Genera Combo</h2>
+
+      <div class="filtro-group">
+        <label><input type="checkbox" id="menu-checkbox" /> Menù (primo, secondo, ecc.)</label>
+      </div>
+
+      <div id="filtri-menu" style="display: none;">
+        <div class="filtro-group">
+          <label><input type="checkbox" id="filtro-primo" /> Primo</label>
+          <label><input type="checkbox" id="filtro-secondo" /> Secondo</label>
+          <label><input type="checkbox" id="filtro-contorno" /> Contorno</label>
+          <label><input type="checkbox" id="filtro-dolce" /> Dolce</label>
+        </div>
+      </div>
+
+      <div id="filtri-base">
+        <div class="filtro-group">
+          <label>Categoria:
+            <select id="filtro-categoria">
+              <option value="">-- Seleziona --</option>
+              <option value="pesce">Pesce</option>
+              <option value="carne">Carne</option>
+              <option value="verdure">Verdure</option>
+              <option value="sughi">Sughi</option>
+              <option value="patate">Patate</option>
+              <option value="freschi">Freschi</option>
+              <option value="integratori">Integratori</option>
+            </select>
+          </label>
+        </div>
+        <div class="filtro-group">
+          <label>Tipo:
+            <select id="filtro-tipo">
+              <option value="">-- Seleziona --</option>
+              <option value="secondo">Secondo</option>
+              <option value="primo">Primo</option>
+              <option value="contorno">Contorno</option>
+              <option value="dolce">Dolce</option>
+              <option value="bevanda">Bevanda</option>
+            </select>
+          </label>
+        </div>
+        <div class="filtro-group">
+          <label>Prezzo:
+            <select id="filtro-prezzo">
+              <option value="">-- Seleziona --</option>
+              <option value="basso">Basso</option>
+              <option value="medio">Medio</option>
+              <option value="alto">Alto</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="filtro-group">
+        <label><input type="checkbox" id="filtro-sweetlife" /> Sweetlife</label>
+        <label><input type="checkbox" id="filtro-senza-lattosio" /> Senza lattosio</label>
+        <label><input type="checkbox" id="filtro-senza-glutine" /> Senza glutine</label>
+        <label><input type="checkbox" id="filtro-vegetariano" /> Vegetariano</label>
+      </div>
+
+      <button id="btn-combo">Suggerisci combo</button>
+
+      <h3>Risultato:</h3>
+      <pre id="risultato-combo"></pre>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
   <header>
     <h1>Seller Coach AI</h1>
   </header>
