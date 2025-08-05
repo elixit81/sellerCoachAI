@@ -159,14 +159,16 @@ document.addEventListener('DOMContentLoaded', () => {
       prezzo: !isMenu ? document.getElementById("filtro-prezzo").value : null
     };
 
-    const prompt = generaPromptCombo(filtri);
+    
+// In script.js, per esempio nel suggerisciCombo:
+const prompt = generaPromptCombo(filtri);
 
     try {
       const risposta = await fetch("/api/coach-ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ domanda: prompt })
-      });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ type: "combo", prompt })  // <--- qui aggiungi type e prompt
+});
 
       const dati = await risposta.json();
       document.getElementById("risultato-combo").innerText = dati.risposta || "Nessuna risposta.";
