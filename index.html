@@ -3,241 +3,194 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Coach di Vendita Bofrost</title>
+  <title>Seller Coach AI</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    main section { display: none; }
-    main section.active { display: block; }
-    .filtro-group { margin-bottom: 10px; }
+    body {
+      display: flex;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    nav {
+      width: 220px;
+      background-color: #2c3e50;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      min-height: 100vh;
+    }
+    nav h1 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 10px;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+    }
+    nav button:hover {
+      background-color: #34495e;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #f4f4f4;
+    }
+    main section {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    main section.active {
+      display: block;
+    }
+    .filtro-group {
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
+
   <nav>
+    <h1>Seller Coach AI</h1>
+    <button data-target="consiglio-giorno">Consiglio del Giorno</button>
+    <button data-target="diario">Diario di Bordo</button>
+    <button data-target="todo-time">To Do Time</button>
     <button data-target="combo">Combo</button>
-    <!-- Altri pulsanti sezione -->
   </nav>
 
   <main>
-    <section id="combo" class="active">
-      <h2>Genera Combo</h2>
-
-      <div class="filtro-group">
-        <label><input type="checkbox" id="menu-checkbox" /> Menù (primo, secondo, ecc.)</label>
-      </div>
-
-      <div id="filtri-menu" style="display: none;">
-        <div class="filtro-group">
-          <label><input type="checkbox" id="filtro-primo" /> Primo</label>
-          <label><input type="checkbox" id="filtro-secondo" /> Secondo</label>
-          <label><input type="checkbox" id="filtro-contorno" /> Contorno</label>
-          <label><input type="checkbox" id="filtro-dolce" /> Dolce</label>
-        </div>
-      </div>
-
-      <div id="filtri-base">
-        <div class="filtro-group">
-          <label>Categoria:
-            <select id="filtro-categoria">
-              <option value="">-- Seleziona --</option>
-              <option value="pesce">Pesce</option>
-              <option value="carne">Carne</option>
-              <option value="verdure">Verdure</option>
-              <option value="sughi">Sughi</option>
-              <option value="patate">Patate</option>
-              <option value="freschi">Freschi</option>
-              <option value="integratori">Integratori</option>
-            </select>
-          </label>
-        </div>
-        <div class="filtro-group">
-          <label>Tipo:
-            <select id="filtro-tipo">
-              <option value="">-- Seleziona --</option>
-              <option value="secondo">Secondo</option>
-              <option value="primo">Primo</option>
-              <option value="contorno">Contorno</option>
-              <option value="dolce">Dolce</option>
-              <option value="bevanda">Bevanda</option>
-            </select>
-          </label>
-        </div>
-        <div class="filtro-group">
-          <label>Prezzo:
-            <select id="filtro-prezzo">
-              <option value="">-- Seleziona --</option>
-              <option value="basso">Basso</option>
-              <option value="medio">Medio</option>
-              <option value="alto">Alto</option>
-            </select>
-          </label>
-        </div>
-      </div>
-
-      <div class="filtro-group">
-        <label><input type="checkbox" id="filtro-sweetlife" /> Sweetlife</label>
-        <label><input type="checkbox" id="filtro-senza-lattosio" /> Senza lattosio</label>
-        <label><input type="checkbox" id="filtro-senza-glutine" /> Senza glutine</label>
-        <label><input type="checkbox" id="filtro-vegetariano" /> Vegetariano</label>
-      </div>
-
-      <button id="btn-combo">Suggerisci combo</button>
-
-      <h3>Risultato:</h3>
-      <pre id="risultato-combo"></pre>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
-  <header>
-    <h1>Seller Coach AI</h1>
-  </header>
-
-  <nav>
-    <button data-target="consiglio-giorno">Consiglio del Giorno</button>
-    <button data-target="diario">Diario di Bordo</button>
-    <button data-target="todo-time">To do Time</button>
-    <button data-target="combo">Combo</button>
-  </nav>
-
-  <main class="container">
-    <!-- Modulo 1: Consiglio del Giorno -->
-    <section id="consiglio-giorno">
+    <!-- Sezione Consiglio del Giorno -->
+    <section id="consiglio-giorno" class="active">
       <h2>Consiglio del Giorno</h2>
       <button id="btn-consiglio">Genera Consiglio</button>
       <p id="consiglio-testo">Premi il pulsante per ricevere un consiglio AI!</p>
     </section>
 
-    <!-- Modulo 2: Diario di Bordo -->
+    <!-- Sezione Diario -->
     <section id="diario">
       <h2>Diario di Bordo & Coach AI</h2>
       <form id="feedback-form">
-        <!-- (campi già presenti) -->
-        <label for="cliente">Cliente:</label>
-        <input type="text" id="cliente" required />
-
-        <label for="clima">Clima Iniziale:</label>
-        <select id="clima" required>
-          <option value="aperto">Aperto</option>
-          <option value="di fretta">Di fretta</option>
-          <option value="scettico">Scettico</option>
-          <option value="amichevole">Amichevole</option>
-        </select>
-
-        <label for="obiettivo">Obiettivo della visita:</label>
-        <input type="text" id="obiettivo" required />
-
-        <label for="prodotti">Prodotti/Offerte proposte:</label>
-        <input type="text" id="prodotti" required />
-
-        <label for="obiezione">Obiezione Chiave:</label>
-        <select id="obiezione">
-          <option value="">-- Nessuna --</option>
-          <option value="È troppo caro">È troppo caro</option>
-          <option value="Non ho spazio nel freezer">Non ho spazio nel freezer</option>
-          <option value="Ci devo pensare">Ci devo pensare</option>
-          <option value="Compro già altro">Compro già altro</option>
-          <option value="Non mi interessa">Non mi interessa</option>
-        </select>
-
-        <label for="mia-risposta">La Mia Risposta:</label>
-        <textarea id="mia-risposta" required></textarea>
-
-        <label for="esito">Esito Finale:</label>
-        <select id="esito" required>
-          <option value="vendita conclusa">Vendita Conclusa</option>
-          <option value="vendita parziale">Vendita Parziale</option>
-          <option value="nessuna vendita">Nessuna Vendita</option>
-          <option value="cliente incuriosito">Cliente incuriosito</option>
-        </select>
-
+        <label>Cliente: <input type="text" id="cliente" required></label>
+        <label>Clima Iniziale:
+          <select id="clima" required>
+            <option value="aperto">Aperto</option>
+            <option value="di fretta">Di fretta</option>
+            <option value="scettico">Scettico</option>
+            <option value="amichevole">Amichevole</option>
+          </select>
+        </label>
+        <label>Obiettivo della visita: <input type="text" id="obiettivo" required></label>
+        <label>Prodotti/Offerte proposte: <input type="text" id="prodotti" required></label>
+        <label>Obiezione Chiave:
+          <select id="obiezione">
+            <option value="">-- Nessuna --</option>
+            <option value="È troppo caro">È troppo caro</option>
+            <option value="Non ho spazio nel freezer">Non ho spazio nel freezer</option>
+            <option value="Ci devo pensare">Ci devo pensare</option>
+            <option value="Compro già altro">Compro già altro</option>
+            <option value="Non mi interessa">Non mi interessa</option>
+          </select>
+        </label>
+        <label>La Mia Risposta:
+          <textarea id="mia-risposta" required></textarea>
+        </label>
+        <label>Esito Finale:
+          <select id="esito" required>
+            <option value="vendita conclusa">Vendita Conclusa</option>
+            <option value="vendita parziale">Vendita Parziale</option>
+            <option value="nessuna vendita">Nessuna Vendita</option>
+            <option value="cliente incuriosito">Cliente incuriosito</option>
+          </select>
+        </label>
         <button type="submit">Analizza con Coach AI</button>
       </form>
-
       <div id="analisi-output" class="output-box"></div>
     </section>
 
-    <!-- Sezione To do Time -->
+    <!-- Sezione To Do Time -->
     <section id="todo-time">
-      <h2>To do Time</h2>
+      <h2>To Do Time</h2>
       <form id="todo-form">
-        <label for="todo-nome">Nome Attività:</label>
-        <input type="text" id="todo-nome" required />
-
-        <label for="todo-orario">Orario (24h):</label>
-        <input type="time" id="todo-orario" required />
-
-        <label for="todo-prodotti">Prodotti richiesti (opzionale):</label>
-        <input type="text" id="todo-prodotti" />
-
+        <label>Nome Attività: <input type="text" id="todo-nome" required></label>
+        <label>Orario (24h): <input type="time" id="todo-orario" required></label>
+        <label>Prodotti richiesti (opzionale): <input type="text" id="todo-prodotti"></label>
         <button type="submit">Aggiungi</button>
       </form>
       <ul id="todo-list"></ul>
       <button type="button" id="reset-todo">Reset</button>
     </section>
 
-    <!-- Sezione Combo -->
+    <!-- Sezione Combo (non visibile di default) -->
     <section id="combo">
-      <h2>Prodotti/Combo</h2>
-     <!-- Checkbox Menù -->
-<label><input type="checkbox" id="filtro-menu"> Menù</label>
+      <h2>Prodotti / Combo</h2>
 
-<!-- Filtri menù (visibili solo se "Menù" è attivo) -->
-<div id="filtri-menu" style="display: none;">
-  <label><input type="checkbox" id="filtro-primo"> Primo</label>
-  <label><input type="checkbox" id="filtro-secondo"> Secondo</label>
-  <label><input type="checkbox" id="filtro-contorno"> Contorno</label>
-  <label><input type="checkbox" id="filtro-dolce"> Dolce</label>
-</div>
+      <div class="filtro-group">
+        <label><input type="checkbox" id="menu-checkbox"> Menù (primo, secondo, ecc.)</label>
+      </div>
 
-<!-- Filtri base (visibili solo se "Menù" è disattivato) -->
-<div id="filtri-base">
-  <label for="filtro-categoria">Categoria:</label>
-  <select id="filtro-categoria">
-    <option value="">Tutte</option>
-    <option value="carne">Carne</option>
-    <option value="pesce">Pesce</option>
-    <option value="verdure">Verdure</option>
-    <option value="gelati">Gelati</option>
-    <option value="sughi">Sughi</option>
-    <option value="integratori">Integratori</option>
-    <option value="i_freschi">Freschi</option>
-    <option value="patate_e_patate">Patate</option>
-  </select>
+      <div id="filtri-menu" style="display: none;">
+        <label><input type="checkbox" id="filtro-primo"> Primo</label>
+        <label><input type="checkbox" id="filtro-secondo"> Secondo</label>
+        <label><input type="checkbox" id="filtro-contorno"> Contorno</label>
+        <label><input type="checkbox" id="filtro-dolce"> Dolce</label>
+      </div>
 
-  <label for="filtro-tipo">Tipo di prodotto:</label>
-  <select id="filtro-tipo">
-    <option value="">Tutti</option>
-    <option value="al naturale">Al naturale</option>
-    <option value="impanato">Impanato</option>
-    <option value="già ricettato">Già ricettato</option>
-    <option value="fritto">Fritto</option>
-    <option value="gratinato">Gratinato</option>
-  </select>
+      <div id="filtri-base">
+        <label>Categoria:
+          <select id="filtro-categoria">
+            <option value="">-- Seleziona --</option>
+            <option value="pesce">Pesce</option>
+            <option value="carne">Carne</option>
+            <option value="verdure">Verdure</option>
+            <option value="sughi">Sughi</option>
+            <option value="patate">Patate</option>
+            <option value="freschi">Freschi</option>
+            <option value="integratori">Integratori</option>
+          </select>
+        </label>
+        <label>Tipo:
+          <select id="filtro-tipo">
+            <option value="">-- Seleziona --</option>
+            <option value="secondo">Secondo</option>
+            <option value="primo">Primo</option>
+            <option value="contorno">Contorno</option>
+            <option value="dolce">Dolce</option>
+            <option value="bevanda">Bevanda</option>
+          </select>
+        </label>
+        <label>Prezzo:
+          <select id="filtro-prezzo">
+            <option value="">-- Seleziona fascia prezzo --</option>
+            <option value="10-20">10 € - 20 €</option>
+            <option value="20-30">20 € - 30 €</option>
+            <option value="30-999">Oltre 30 €</option>
+          </select>
 
-  <label for="filtro-prezzo">Prezzo massimo (€):</label>
-  <input type="number" id="filtro-prezzo" min="0" placeholder="Es: 10">
-</div>
+        </label>
+      </div>
 
-<!-- Filtri sempre visibili -->
-<div id="filtri-sempre">
-  <label><input type="checkbox" id="filtro-sweetlife"> SweetLife (pochi zuccheri)</label>
-  <label><input type="checkbox" id="filtro-lattosio"> Senza lattosio</label>
-  <label><input type="checkbox" id="filtro-glutine"> Senza glutine</label>
-  <label><input type="checkbox" id="filtro-vegano"> Vegetariano / Vegano</label>
-</div>
+      <div class="filtro-group">
+        <label><input type="checkbox" id="filtro-sweetlife"> Sweetlife</label>
+        <label><input type="checkbox" id="filtro-senza-lattosio"> Senza lattosio</label>
+        <label><input type="checkbox" id="filtro-senza-glutine"> Senza glutine</label>
+        <label><input type="checkbox" id="filtro-vegetariano"> Vegetariano</label>
+      </div>
 
-<!-- Output -->
-<button id="btn-combo">Suggerisci prodotti</button>
-<p id="combo-output">Premi il pulsante per ricevere un consiglio AI!</p>
-
+      <button id="btn-combo">Suggerisci combo</button>
+      <h3>Risultato:</h3>
+      <pre id="risultato-combo"></pre>
     </section>
   </main>
-
-  <footer>
-    <p>&copy; 2025 Seller Coach AI</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
