@@ -208,7 +208,7 @@ async function handleAnalisi(event) {
   const el = document.getElementById("analisi-output");
   el.innerText = "Analisi in corso...";
 
-  const testo = document.getElementById("feedback-text")?.value || "";
+  const testo = document.getElementById("feedback-form")?.value || "";
 
   const prompt = `
 Ecco cosa ho fatto oggi in vendita:
