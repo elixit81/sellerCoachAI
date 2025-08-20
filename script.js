@@ -33,12 +33,19 @@ async function generaConsiglio() {
     const text = await res.text();
 console.log("Raw response:", text);
 
+let data;
 try {
-  const data = JSON.parse(text);
+  data = JSON.parse(text);
   console.log("Parsed JSON:", data);
-} catch(e) {
-  console.error("JSON parse error:", e);
+} catch (e) {
+  console.error("JSON parse error:", e, "Original text:", text);
 }
+
+// A questo punto puoi usare `data` senza errore
+if (data) {
+  console.log("Result:", data.result);
+}
+
     el.innerText = data.result || "Nessuna risposta.";
   } catch (e) {
     el.innerText = "Errore: " + e.message;
