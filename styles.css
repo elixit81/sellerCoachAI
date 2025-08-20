@@ -4,7 +4,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to bottom, #0d1117, #161b22);
-  color: #222222; /* più chiaro */
+  color: #222222; /* testo più leggibile */
   margin: 0;
   padding: 0;
 }
@@ -50,11 +50,11 @@ main.container {
   max-width: 900px;
   margin: 2rem auto;
   padding: 1.5rem;
-  background: #1c1c2d;
+  background: #f5f5f5;   /* chiaro */
   border-radius: 14px;
   box-shadow: 0 0 30px rgba(130, 110, 240, 0.2);
   backdrop-filter: blur(4px);
-  color: #f5f5f5; /* più contrastato */
+  color: #222222;        /* testo scuro per contrasto */
 }
 
 section {
@@ -75,7 +75,7 @@ form {
 
 label {
   font-weight: bold;
-  color: #ffffff;
+  color: #111111; /* più leggibile */
 }
 
 input,
@@ -84,9 +84,9 @@ textarea,
 button {
   padding: 0.6rem;
   border-radius: 5px;
-  border: 1px solid #6c63b8;
-  background: #0e101c;
-  color: #ffffff; /* testo bianco */
+  border: 1px solid #888888;
+  background: #ffffff;   /* chiaro */
+  color: #222222;        /* testo scuro */
   font-size: 1rem;
 }
 
@@ -128,17 +128,17 @@ button[type='button']:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #2a2c4e;
+  background: #e0e0e0;   /* chiaro */
   padding: 0.6rem 1rem;
-  border-bottom: 1px solid #484b7d;
+  border-bottom: 1px solid #888888;
   border-radius: 6px;
   margin-bottom: 0.5rem;
   transition: background 0.2s;
-  color: #f8f8f8; /* più leggibile */
+  color: #111111;        /* scuro */
 }
 
 #todo-list li.completed {
-  background: #3c3f6d;
+  background: #cccccc;
 }
 
 #todo-list li.completed span {
@@ -149,14 +149,14 @@ button[type='button']:hover {
 .output-box {
   margin-top: 1rem;
   padding: 1rem;
-  background: #1e1f3a;
+  background: #fafafa;   /* chiaro */
   border-radius: 6px;
-  border: 1px solid #5c5ac3;
-  color: #ffffff; /* testo bianco */
+  border: 1px solid #888888;
+  color: #222222;        /* scuro */
 }
 
 .consiglio-testo {
-  color: #ffffff;
+  color: #111111;
   font-size: 1.2rem;
   margin-top: 1rem;
 }
@@ -178,5 +178,10 @@ footer {
   padding: 1rem;
   background: #16162e;
   font-size: 0.9rem;
-  color: #dddddd; /* più chiaro del #bbbbbb */
+  color: #dddddd; /* leggibile */
+}
+
+/* Titoli più scuri */
+h1, h2, h3 {
+  color: #111111;
 }
