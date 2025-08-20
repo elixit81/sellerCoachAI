@@ -30,27 +30,27 @@ async function generaConsiglio() {
       })
     });
 
+    // Leggi sempre come testo
     const text = await res.text();
-console.log("Raw response:", text);
+    console.log("Raw response:", text);
 
-let data;
-try {
-  data = JSON.parse(text);
-  console.log("Parsed JSON:", data);
-} catch (e) {
-  console.error("JSON parse error:", e, "Original text:", text);
-}
+    let data;
+    try {
+      data = JSON.parse(text);
+      console.log("Parsed JSON:", data);
+    } catch (e) {
+      console.error("JSON parse error:", e, "Original text:", text);
+    }
 
-// A questo punto puoi usare `data` senza errore
-if (data) {
-  console.log("Result:", data.result);
-}
+    // Mostra il risultato corretto se presente, altrimenti il testo grezzo o fallback
+    el.innerText = data?.result || text || "Nessuna risposta.";
 
-    el.innerText = data.result || "Nessuna risposta.";
   } catch (e) {
+    console.error("Errore fetch:", e);
     el.innerText = "Errore: " + e.message;
   }
 }
+
 // =======================
 // Sezione To Do Time
 // =======================
