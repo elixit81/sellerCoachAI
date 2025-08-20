@@ -6,13 +6,14 @@ const openai = new OpenAI({
 });
 
 module.exports = async function handler(req, res) {
+  res.setHeader("Content-Type", "application/json");
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Metodo non consentito, usa POST." });
   }
 
   const { type, prompt } = req.body || {};
 
-  // Controllo parametri obbligatori
   if (!type || !prompt) {
     return res.status(400).json({ error: "Parametri mancanti: 'type' e 'prompt' sono obbligatori." });
   }
@@ -39,8 +40,8 @@ module.exports = async function handler(req, res) {
         { role: "system", content: systemPrompt },
         { role: "user", content: prompt },
       ],
-      max_tokens: 300,     // limite per risposte concise
-      temperature: 0.7,    // bilanciamento tra creatività e coerenza
+      max_tokens: 300,
+      temperature: 0.7,
     });
 
     const aiMessage = chat.choices?.[0]?.message?.content?.trim() || "Nessuna risposta AI.";
@@ -48,16 +49,6 @@ module.exports = async function handler(req, res) {
 
   } catch (err) {
     console.error("Errore AI:", err);
-
-    // Gestione errori più dettagliata
-    if (err.response) {
-      res.status(err.response.status).json({
-        error: err.response.data?.error?.message || "Errore API OpenAI",
-      });
-    } else if (err.request) {
-      res.status(500).json({ error: "Nessuna risposta ricevuta dall'AI." });
-    } else {
-      res.status(500).json({ error: "Errore interno del server AI." });
-    }
+    res.status(500).json({ error: err.message || "Errore interno del server AI." });
   }
 };
