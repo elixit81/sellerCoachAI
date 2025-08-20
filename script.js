@@ -30,7 +30,15 @@ async function generaConsiglio() {
       })
     });
 
-    const data = await res.json();
+    const text = await res.text();
+console.log("Raw response:", text);
+
+try {
+  const data = JSON.parse(text);
+  console.log("Parsed JSON:", data);
+} catch(e) {
+  console.error("JSON parse error:", e);
+}
     el.innerText = data.result || "Nessuna risposta.";
   } catch (e) {
     el.innerText = "Errore: " + e.message;
