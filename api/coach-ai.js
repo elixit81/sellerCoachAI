@@ -6,7 +6,7 @@ const openai = new OpenAI({
 });
 
 module.exports = async function handler(req, res) {
-  res.setHeader("Content-Type", "application/json");
+  console.log("Request received");
 
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Metodo non consentito, usa POST." });
@@ -14,6 +14,16 @@ module.exports = async function handler(req, res) {
 
   const { type, prompt } = req.body || {};
 
+  // Log del body per debug
+  console.log("Request body:", req.body);
+
+  // Controllo chiave API
+  if (!process.env.OPENAI_API_KEY) {
+    console.error("Chiave OpenAI mancante!");
+    return res.status(500).json({ error: "Chiave OpenAI non configurata" });
+  }
+
+  // Controllo parametri obbligatori
   if (!type || !prompt) {
     return res.status(400).json({ error: "Parametri mancanti: 'type' e 'prompt' sono obbligatori." });
   }
@@ -27,8 +37,9 @@ module.exports = async function handler(req, res) {
     systemPrompt =
       "Sei un coach esperto che analizza il comportamento di vendita e fornisce feedback specifico e costruttivo. Indica anche le caratteristiche del prodotto da valorizzare e suggerisci in poche parole come gestire meglio l'obiezione.";
   } else if (type === "combo") {
+    // Qui il prompt generato da front-end arriva già completo
     systemPrompt =
-      "Sei un esperto nutrizionista e consulente di vendita. Seleziona 3 combinazioni adatte per un pranzo o cena equilibrato, gustoso e con prodotti surgelati. Ogni combo deve contenere almeno: un alimento principale carne o pesce, un contorno verdure o patate, un completamento fresco. Ogni combo deve essere equilibrata, adatta a un cliente medio e utile da proporre in vendita.";
+      "Sei un esperto nutrizionista e consulente di vendita. Ricevi dal front-end un prompt dettagliato con i filtri selezionati (portate, preferenze, categoria, tipo, prezzo). Rispondi con 3 combinazioni equilibrate di prodotti surgelati, come richiesto dal cliente.";
   } else {
     return res.status(400).json({ error: "Tipo non valido. Usa: consiglio, analisi o combo." });
   }
@@ -45,10 +56,24 @@ module.exports = async function handler(req, res) {
     });
 
     const aiMessage = chat.choices?.[0]?.message?.content?.trim() || "Nessuna risposta AI.";
+    console.log("AI response:", aiMessage);
+
     res.status(200).json({ result: aiMessage });
 
   } catch (err) {
     console.error("Errore AI:", err);
-    res.status(500).json({ error: err.message || "Errore interno del server AI." });
+
+    if (err.response) {
+      // OpenAI API error
+      res.status(err.response.status).json({
+        error: err.response.data?.error?.message || "Errore API OpenAI",
+      });
+    } else if (err.request) {
+      // Nessuna risposta
+      res.status(500).json({ error: "Nessuna risposta ricevuta dall'AI." });
+    } else {
+      // Errore interno
+      res.status(500).json({ error: "Errore interno del server AI." });
+    }
   }
 };
