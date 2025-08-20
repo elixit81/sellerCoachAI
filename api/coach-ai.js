@@ -1,14 +1,15 @@
-// api/coach-ai.js
-
-import OpenAI from "openai";
+// main/api/coach-ai.js
+const OpenAI = require("openai");
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
+  res.setHeader("Content-Type", "application/json");
+
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Metodo non consentito" });
+    return res.status(405).json({ error: "Metodo non consentito, usa POST." });
   }
 
   const { type, prompt } = req.body || {};
