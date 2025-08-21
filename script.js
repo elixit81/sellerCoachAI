@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const dati = await risposta.json();
-      document.getElementById("risultato-combo").innerText = dati.risposta || "Nessuna risposta.";
+      document.getElementById("risultato-combo").innerText = dati.result || "Nessuna risposta.";
     } catch (err) {
       document.getElementById("risultato-combo").innerText = "Errore: " + err.message;
     }
@@ -223,7 +223,7 @@ async function handleAnalisi(event) {
   const el = document.getElementById("analisi-output");
   el.innerText = "Analisi in corso...";
 
-  const testo = document.getElementById("feedback-form")?.value || "";
+  const testo = document.getElementById("feedback-text")?.value || "";
 
   const prompt = `
 Ecco cosa ho fatto oggi in vendita:
