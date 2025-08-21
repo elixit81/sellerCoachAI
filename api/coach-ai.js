@@ -14,15 +14,15 @@ export default async function handler(req, res) {
 
   const { type, prompt } = req.body || {};
 
-  console.log("Request body:", req.body);
-
   if (!process.env.OPENAI_API_KEY) {
     console.error("Chiave OpenAI mancante!");
     return res.status(500).json({ error: "Chiave OpenAI non configurata" });
   }
 
   if (!type || !prompt) {
-    return res.status(400).json({ error: "Parametri mancanti: 'type' e 'prompt' sono obbligatori." });
+    return res.status(400).json({
+      error: "Parametri mancanti: 'type' e 'prompt' sono obbligatori.",
+    });
   }
 
   let systemPrompt = "";
@@ -35,9 +35,11 @@ export default async function handler(req, res) {
       "Sei un coach esperto che analizza il comportamento di vendita e fornisce feedback specifico e costruttivo. Indica anche le caratteristiche del prodotto da valorizzare e suggerisci in poche parole come gestire meglio l'obiezione.";
   } else if (type === "combo") {
     systemPrompt =
-      "Sei un esperto nutrizionista e consulente di vendita. Ricevi dal front-end un prompt dettagliato con i filtri selezionati (portate, preferenze, categoria, tipo, prezzo). Rispondi con 3 combinazioni equilibrate di prodotti surgelati, come richiesto dal cliente.";
+      "Sei un esperto nutrizionista e consulente di vendita. Ricevi dal front-end un prompt dettagliato con i filtri selezionati. Rispondi con 3 combinazioni equilibrate di prodotti surgelati.";
   } else {
-    return res.status(400).json({ error: "Tipo non valido. Usa: consiglio, analisi o combo." });
+    return res
+      .status(400)
+      .json({ error: "Tipo non valido. Usa: consiglio, analisi o combo." });
   }
 
   try {
@@ -51,22 +53,18 @@ export default async function handler(req, res) {
       temperature: 0.7,
     });
 
-    const aiMessage = chat.choices?.[0]?.message?.content?.trim() || "Nessuna risposta AI.";
+    const aiMessage =
+      chat.choices?.[0]?.message?.content?.trim() || "Nessuna risposta AI.";
     console.log("AI response:", aiMessage);
 
-    return res.status(200).json({ result: aiMessage });
-
+    res.status(200).json({ result: aiMessage });
   } catch (err) {
     console.error("Errore AI:", err);
-
-    if (err.response) {
-      return res.status(err.response.status).json({
-        error: err.response.data?.error?.message || "Errore API OpenAI",
-      });
-    } else if (err.request) {
-      return res.status(500).json({ error: "Nessuna risposta ricevuta dall'AI." });
-    } else {
-      return res.status(500).json({ error: "Errore interno del server AI." });
-    }
+    res.status(500).json({
+      error:
+        err.response?.data?.error?.message ||
+        err.message ||
+        "Errore interno del server AI.",
+    });
   }
 }
