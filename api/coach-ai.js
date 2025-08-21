@@ -1,11 +1,11 @@
-// main/api/coach-ai.js
-const OpenAI = require("openai");
+// api/coach-ai.js
+import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   console.log("Request received");
 
   if (req.method !== "POST") {
@@ -14,16 +14,13 @@ module.exports = async function handler(req, res) {
 
   const { type, prompt } = req.body || {};
 
-  // Log del body per debug
   console.log("Request body:", req.body);
 
-  // Controllo chiave API
   if (!process.env.OPENAI_API_KEY) {
     console.error("Chiave OpenAI mancante!");
     return res.status(500).json({ error: "Chiave OpenAI non configurata" });
   }
 
-  // Controllo parametri obbligatori
   if (!type || !prompt) {
     return res.status(400).json({ error: "Parametri mancanti: 'type' e 'prompt' sono obbligatori." });
   }
@@ -37,7 +34,6 @@ module.exports = async function handler(req, res) {
     systemPrompt =
       "Sei un coach esperto che analizza il comportamento di vendita e fornisce feedback specifico e costruttivo. Indica anche le caratteristiche del prodotto da valorizzare e suggerisci in poche parole come gestire meglio l'obiezione.";
   } else if (type === "combo") {
-    // Qui il prompt generato da front-end arriva già completo
     systemPrompt =
       "Sei un esperto nutrizionista e consulente di vendita. Ricevi dal front-end un prompt dettagliato con i filtri selezionati (portate, preferenze, categoria, tipo, prezzo). Rispondi con 3 combinazioni equilibrate di prodotti surgelati, come richiesto dal cliente.";
   } else {
@@ -58,22 +54,19 @@ module.exports = async function handler(req, res) {
     const aiMessage = chat.choices?.[0]?.message?.content?.trim() || "Nessuna risposta AI.";
     console.log("AI response:", aiMessage);
 
-    res.status(200).json({ result: aiMessage });
+    return res.status(200).json({ result: aiMessage });
 
   } catch (err) {
     console.error("Errore AI:", err);
 
     if (err.response) {
-      // OpenAI API error
-      res.status(err.response.status).json({
+      return res.status(err.response.status).json({
         error: err.response.data?.error?.message || "Errore API OpenAI",
       });
     } else if (err.request) {
-      // Nessuna risposta
-      res.status(500).json({ error: "Nessuna risposta ricevuta dall'AI." });
+      return res.status(500).json({ error: "Nessuna risposta ricevuta dall'AI." });
     } else {
-      // Errore interno
-      res.status(500).json({ error: "Errore interno del server AI." });
+      return res.status(500).json({ error: "Errore interno del server AI." });
     }
   }
-};
+}
