@@ -1,6 +1,11 @@
-// catalogo.js
-const fs = require("fs");
-const path = require("path");
+// catalogo.js (versione ESM)
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// __dirname non esiste in ESM → lo ricreiamo
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Percorso al file JSON unificato
 const catalogoPath = path.join(__dirname, "catalogo_completo_prova.json");
@@ -15,4 +20,5 @@ try {
   catalogo = {};
 }
 
-module.exports = catalogo;
+// Esportazione in stile ESM
+export default catalogo;
