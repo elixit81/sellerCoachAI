@@ -1,4 +1,4 @@
-// api/coach-ai.js
+// /pages/api/coach-ai.js
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -6,8 +6,6 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
-  console.log("Request received");
-
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Metodo non consentito, usa POST." });
   }
@@ -15,7 +13,6 @@ export default async function handler(req, res) {
   const { type, prompt } = req.body || {};
 
   if (!process.env.OPENAI_API_KEY) {
-    console.error("Chiave OpenAI mancante!");
     return res.status(500).json({ error: "Chiave OpenAI non configurata" });
   }
 
@@ -29,22 +26,20 @@ export default async function handler(req, res) {
 
   if (type === "consiglio") {
     systemPrompt =
-      "Sei un coach di vendita esperto per venditori di surgelati Bofrost. Scrivi una breve frase motivazionale e poi dammi una breve pillola concreta che posso usare oggi stesso in vendita.";
+      "Sei un coach di vendita esperto per venditori di surgelati Bofrost. Scrivi una breve frase motivazionale e poi una pillola concreta di vendita.";
   } else if (type === "analisi") {
     systemPrompt =
-      "Sei un coach esperto che analizza il comportamento di vendita e fornisce feedback specifico e costruttivo. Indica anche le caratteristiche del prodotto da valorizzare e suggerisci in poche parole come gestire meglio l'obiezione.";
+      "Sei un coach esperto che analizza il comportamento di vendita e fornisce feedback costruttivo su come presentare meglio i prodotti e gestire le obiezioni.";
   } else if (type === "combo") {
     systemPrompt =
-      "Sei un esperto nutrizionista e consulente di vendita. Ricevi dal front-end un prompt dettagliato con i filtri selezionati. Rispondi con 3 combinazioni equilibrate di prodotti surgelati.";
+      "Sei un nutrizionista e consulente di vendita. Suggerisci 3 combinazioni equilibrate di prodotti surgelati basandoti sul catalogo.";
   } else {
-    return res
-      .status(400)
-      .json({ error: "Tipo non valido. Usa: consiglio, analisi o combo." });
+    return res.status(400).json({ error: "Tipo non valido." });
   }
 
   try {
-    const chat = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo", // usa un modello a cui hai accesso
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: prompt },
@@ -54,17 +49,13 @@ export default async function handler(req, res) {
     });
 
     const aiMessage =
-      chat.choices?.[0]?.message?.content?.trim() || "Nessuna risposta AI.";
-    console.log("AI response:", aiMessage);
+      completion.choices?.[0]?.message?.content?.trim() || "Nessuna risposta AI.";
 
     res.status(200).json({ result: aiMessage });
   } catch (err) {
     console.error("Errore AI:", err);
     res.status(500).json({
-      error:
-        err.response?.data?.error?.message ||
-        err.message ||
-        "Errore interno del server AI.",
+      error: err.response?.data?.error?.message || err.message || "Errore server AI.",
     });
   }
 }
