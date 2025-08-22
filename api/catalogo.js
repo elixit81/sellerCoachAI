@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Percorso al file JSON unificato
-const catalogoPath = path.join(__dirname, "catalogo_completo_prova.json");
+const catalogoPath = path.join(__dirname, "catalogo_unificato.json");
 
 // Carica il catalogo
 let catalogo = {};
